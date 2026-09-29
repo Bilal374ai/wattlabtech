@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<script src="js/consent.js?v=3"></script>
+<meta name="google-site-verification" content="google6a08c7dbfdb2fb30">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EV Charging Time Calculator 2026 | Wattlab</title>
+  <meta name="description" content="Calculate exact EV charging time for any car worldwide. Enter your car, country, charger type — get precise hours and minutes. Free 2026 EV charging calculator."/>
+  
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="google-adsense-account" content="ca-pub-1460692736386027">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQQS92H7YB"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VQQS92H7YB');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1460692736386027" crossorigin="anonymous"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#00BFFF">
+  <style>
+    body{background:#080C10;color:#e2e8f0;}
+    .neon-text{color:#00BFFF;}
+    .grad-line{background:linear-gradient(90deg,transparent,#00BFFF,transparent);height:1px;}
+    .hero-bg{background:radial-gradient(ellipse 70% 50% at 50% -5%,rgba(0,191,255,0.10) 0%,transparent 65%);}
+    .calc-input,.calc-select{background:#111827;border:1px solid #1C2433;border-radius:.625rem;color:#e2e8f0;width:100%;padding:.65rem .9rem;font-size:.95rem;transition:border-color .15s,box-shadow .15s;outline:none;appearance:none;-webkit-appearance:none;}
+    .calc-input:focus,.calc-select:focus{border-color:#00BFFF;box-shadow:0 0 0 3px rgba(0,191,255,0.12);}
+    .calc-input[type=number]::-webkit-inner-spin-button,.calc-input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+    .calc-input[type=number]{-moz-appearance:textfield;}
+    .calc-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300BFFF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.5rem;}
+    .calc-select option{background:#0D1117;color:#e2e8f0;}
+    .result-card{background:#0D1117;border:1px solid #1C2433;border-radius:1rem;transition:border-color .2s,box-shadow .2s;}
+    .result-card.highlight{border-color:#00BFFF;box-shadow:0 0 24px rgba(0,191,255,0.2);}
+    .nav-link{transition:color .15s;color:#94a3b8;}
+    .nav-link:hover{color:#00BFFF;}
+    label{display:block;font-size:.8rem;font-weight:500;color:#94a3b8;margin-bottom:.4rem;}
+    .cta-pulse{animation:ctaPulse 3s ease-in-out infinite;}
+    @keyframes ctaPulse{0%,100%{box-shadow:0 0 16px rgba(0,191,255,0.35);}50%{box-shadow:0 0 36px rgba(0,191,255,0.6);}}
+    .fade-in{animation:fadeIn .4s ease both;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+    .charger-card{background:#111827;border:2px solid #1C2433;border-radius:1rem;cursor:pointer;transition:border-color .2s,box-shadow .2s;}
+    .charger-card:hover{border-color:#00BFFF;}
+    .charger-card.selected{border-color:#00BFFF;box-shadow:0 0 20px rgba(0,191,255,0.2);background:#0D1F2D;}
+    .progress-track{background:#1C2433;border-radius:99px;height:12px;overflow:hidden;}
+    .progress-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#0066aa,#00BFFF);transition:width 1s cubic-bezier(.4,0,.2,1);}
+    .tab-btn{padding:.5rem 1.2rem;border-radius:.5rem;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid #1C2433;color:#94a3b8;background:transparent;}
+    .tab-btn.active{background:#00BFFF;color:#080C10;border-color:#00BFFF;}
+  </style>
+<link rel="canonical" href="https://wattlabtech.netlify.app/charging-time.html">
+<link rel="alternate" hreflang="x-default" href="https://wattlabtech.netlify.app/charging-time.html">
+<link rel="alternate" hreflang="en" href="https://wattlabtech.netlify.app/charging-time.html">
+<link rel="stylesheet" href="css/tw-tools.css?v=3">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wattlab">
+<meta property="og:title" content="EV Charging Time Calculator 2026 | Wattlab">
+<meta property="og:description" content="Calculate exact EV charging time for any car worldwide. Enter your car, country, charger type — get precise hours and minutes. Free 2026 EV charging calculator.">
+<meta property="og:url" content="https://wattlabtech.netlify.app/charging-time.html">
+<meta property="og:image" content="https://wattlabtech.netlify.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EV Charging Time Calculator 2026 | Wattlab">
+<meta name="twitter:description" content="Calculate exact EV charging time for any car worldwide. Enter your car, country, charger type — get precise hours and minutes. Free 2026 EV charging calculator.">
+<meta name="twitter:image" content="https://wattlabtech.netlify.app/assets/og-image.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://wattlabtech.netlify.app/"}, {"@type": "ListItem", "position": 2, "name": "EV Charging Time Calculator 2026", "item": "https://wattlabtech.netlify.app/charging-time.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "EV Charging Time Calculator 2026", "url": "https://wattlabtech.netlify.app/charging-time.html", "description": "Calculate exact EV charging time for any car worldwide. Enter your car, country, charger type — get precise hours and minutes. Free 2026 EV charging calculator.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Wattlab"}}</script>
+</head>
+<body class="font-sans antialiased">
+
+<header class="sticky top-0 z-50 border-b border-[#1C2433] bg-[#080C10]/90 backdrop-blur-md">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="font-bold text-lg tracking-tight">Watt<span class="neon-text">lab</span></a>
+    <div class="flex items-center gap-4 text-sm">
+      <a href="tools-hub.html" class="nav-link hidden sm:inline">← All EV Tools</a>
+      <a href="tools-hub.html" class="sm:hidden nav-link text-[#00BFFF]">← Tools</a>
+    </div>
+  </nav>
+</header>
+
+<main class="hero-bg">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-24">
+
+    <!-- Header -->
+    <div class="mb-10 text-center">
+      <div class="flex items-center justify-center gap-2 mb-3">
+        <span class="w-8 h-px bg-[#00BFFF]"></span>
+        <span class="text-xs font-mono text-[#00BFFF] tracking-widest uppercase">Free Tool — Any Car, Any Country</span>
+        <span class="w-8 h-px bg-[#00BFFF]"></span>
+      </div>
+      <div class="text-5xl mb-4">🔋</div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">EV Charging Time <span class="neon-text">Calculator</span></h1>
+      <p class="text-slate-400 text-lg max-w-xl mx-auto">Any car. Any country. Any charger. Get exact charging time in seconds.</p>
+    </div>
+
+    <!-- STEP 1: Car Selection -->
+    <div class="result-card p-6 mb-5">
+      <div class="text-xs font-mono text-[#00BFFF] mb-4 tracking-widest">STEP 1 — YOUR EV</div>
+
+      <!-- Tabs: Preset or Custom -->
+      <div class="flex gap-2 mb-5">
+        <button class="tab-btn active" onclick="switchTab('preset',this)">🚗 Choose Car</button>
+        <button class="tab-btn" onclick="switchTab('custom',this)">✏️ Enter Manually</button>
+      </div>
+
+      <!-- Preset Tab -->
+      <div id="tab-preset">
+        <div class="mb-4">
+          <label>Country / Region</label>
+          <select class="calc-select" id="carCountry" onchange="filterCars()">
+            <option value="all">🌍 All Countries</option>
+            <option value="usa" selected>🇺🇸 United States</option>
+            <option value="europe">🇪🇺 Europe</option>
+            <option value="uk">🇬🇧 United Kingdom</option>
+            <option value="china">🇨🇳 China</option>
+            <option value="other">🌏 Other</option>
+          </select>
+        </div>
+        <div>
+          <label>Select Your EV</label>
+          <select class="calc-select" id="carPreset" onchange="applyPreset()">
+            <option value="">— Choose your car —</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Custom Tab -->
+      <div id="tab-custom" class="hidden">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label>Car Make / Model Name</label>
+            <input type="text" class="calc-input" id="customCarName" placeholder="e.g. My Custom EV">
+          </div>
+          <div>
+            <label>Battery Capacity (kWh)</label>
+            <input type="number" class="calc-input" id="batterySize" placeholder="e.g. 82" min="5" max="300">
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label>Charging Efficiency (%)</label>
+        <input type="number" class="calc-input" id="efficiency" placeholder="90" min="50" max="100" value="90">
+        <p class="text-xs text-slate-600 mt-1">Default 90% — typical for most EVs. Level 1 may be lower (~85%).</p>
+      </div>
+    </div>
+
+    <!-- STEP 2: Battery Level -->
+    <div class="result-card p-6 mb-5">
+      <div class="text-xs font-mono text-[#00BFFF] mb-4 tracking-widest">STEP 2 — BATTERY LEVEL</div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label>Current Battery (%)</label>
+          <input type="number" class="calc-input" id="currentLevel" placeholder="e.g. 20" min="0" max="99" value="20">
+        </div>
+        <div>
+          <label>Target Battery (%)</label>
+          <input type="number" class="calc-input" id="targetLevel" placeholder="e.g. 80" min="1" max="100" value="80">
+          <p class="text-xs text-slate-600 mt-1">Tip: 80% daily, 100% for long trips</p>
+        </div>
+      </div>
+
+      <!-- Quick presets -->
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class="text-xs text-slate-500 self-center">Quick:</span>
+        <button onclick="setLevels(20,80)" class="text-xs px-3 py-1 rounded-full border border-[#1C2433] text-slate-400 hover:border-[#00BFFF] hover:text-[#00BFFF] transition-colors">20→80%</button>
+        <button onclick="setLevels(0,100)" class="text-xs px-3 py-1 rounded-full border border-[#1C2433] text-slate-400 hover:border-[#00BFFF] hover:text-[#00BFFF] transition-colors">Empty→Full</button>
+        <button onclick="setLevels(10,80)" class="text-xs px-3 py-1 rounded-full border border-[#1C2433] text-slate-400 hover:border-[#00BFFF] hover:text-[#00BFFF] transition-colors">10→80%</button>
+        <button onclick="setLevels(50,100)" class="text-xs px-3 py-1 rounded-full border border-[#1C2433] text-slate-400 hover:border-[#00BFFF] hover:text-[#00BFFF] transition-colors">50→100%</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Country & Charger -->
+    <div class="result-card p-6 mb-6">
+      <div class="text-xs font-mono text-[#00BFFF] mb-4 tracking-widest">STEP 3 — CHARGER TYPE</div>
+
+      <div class="mb-5">
+        <label>Your Country (for local charger standards)</label>
+        <select class="calc-select" id="chargerCountry" onchange="updateChargers()">
+          <option value="usa">🇺🇸 United States</option>
+          <option value="europe">🇪🇺 Europe (EU)</option>
+          <option value="uk">🇬🇧 United Kingdom</option>
+          <option value="china">🇨🇳 China</option>
+          <option value="australia">🇦🇺 Australia</option>
+          <option value="canada">🇨🇦 Canada</option>
+          <option value="japan">🇯🇵 Japan</option>
+          <option value="other">🌏 Other</option>
+        </select>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="chargerGrid"></div>
+
+      <div class="mt-4">
+        <label>Or enter custom charger power (kW)</label>
+        <input type="number" class="calc-input" id="customKw" placeholder="e.g. 11.5 or 150" min="0.5" max="350" oninput="clearChargerSelection()">
+      </div>
+    </div>
+
+    <!-- CALCULATE -->
+    <button onclick="calculate()" class="w-full cta-pulse bg-[#00BFFF] text-[#080C10] font-extrabold py-4 rounded-xl text-lg mb-8 hover:bg-white transition-colors">
+      ⚡ Calculate Charging Time
+    </button>
+
+    <!-- RESULTS -->
+    <div id="results" class="hidden fade-in">
+
+      <div class="result-card highlight p-7 mb-5 text-center">
+        <div class="text-xs font-mono text-[#00BFFF] mb-2 tracking-widest">CHARGING TIME</div>
+        <div class="text-6xl font-extrabold neon-text mb-1" id="mainTime">—</div>
+        <div class="text-slate-400 text-sm mb-1" id="carLabel">—</div>
+        <div class="text-slate-500 text-sm mb-4" id="chargerLabel">—</div>
+        <div class="mb-3">
+          <div class="flex justify-between text-xs text-slate-500 mb-1">
+            <span id="fromPct">0%</span>
+            <span id="toPct">80%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressBar" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="text-xs text-slate-500" id="kwhNeeded">— kWh needed</div>
+      </div>
+
+      <!-- Comparison -->
+      <div class="result-card p-6 mb-5">
+        <div class="text-xs font-mono text-[#00BFFF] mb-4 tracking-widest">ALL CHARGER TYPES — COMPARISON</div>
+        <div class="space-y-3" id="comparisonGrid"></div>
+      </div>
+
+      <!-- Country info -->
+      <div class="result-card p-6 mb-5" id="countryInfoCard">
+        <div class="text-xs font-mono text-[#00BFFF] mb-2 tracking-widest">YOUR COUNTRY — CHARGING STANDARDS</div>
+        <p class="text-sm text-slate-400" id="countryInfo"></p>
+      </div>
+
+      <!-- Tips -->
+      <div class="result-card p-6 mb-5">
+        <div class="text-xs font-mono text-[#00BFFF] mb-3 tracking-widest">💡 SMART CHARGING TIPS</div>
+        <div class="space-y-2 text-sm text-slate-400">
+          <p>✅ <strong class="text-white">Daily charging:</strong> Keep between 20–80% to maximize battery lifespan.</p>
+          <p>✅ <strong class="text-white">Road trips:</strong> Charge to 100% only when needed — reduces battery stress long-term.</p>
+          <p>✅ <strong class="text-white">Overnight:</strong> Level 2 at home is ideal — cheap off-peak rates, ready every morning.</p>
+          <p>✅ <strong class="text-white">Cold weather:</strong> Add 20–30% more time — batteries charge slower below 32°F / 0°C.</p>
+          <p>✅ <strong class="text-white">Hot weather:</strong> Park in shade when charging — heat above 95°F / 35°C slows charging too.</p>
+        </div>
+      </div>
+
+      
+
+      <div class="result-card p-6 mt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <div class="text-xs font-mono text-[#00BFFF] mb-1">NEXT STEP</div>
+          <div class="font-semibold">How much will you save switching to EV?</div>
+          <div class="text-sm text-slate-400 mt-0.5">Calculate your yearly fuel savings vs gas</div>
+        </div>
+        <a href="calculator.html" class="shrink-0 text-sm font-semibold text-[#00BFFF] border border-[#00BFFF]/40 px-5 py-2.5 rounded-lg hover:bg-[#00BFFF]/10 transition-colors">Savings Calculator →</a>
+      </div>
+    </div>
+  </div>
+<section class="max-w-4xl mx-auto px-4 sm:px-6 pb-20 text-sm text-slate-400 leading-relaxed space-y-3" aria-label="About this calculator"><h2 class="text-lg font-bold text-white">How the charging time calculator works</h2><h3 class="font-semibold text-slate-200 pt-2">The basic formula</h3><p>Charging time (hours) ≈ energy needed (kWh) ÷ charging power (kW). Energy needed = battery size × (target % − start %). AC charging also loses roughly 10% as heat, so real times are a little longer than the pure formula.</p><h3 class="font-semibold text-slate-200 pt-2">Why real charging is slower</h3><p>Cars slow down as the battery fills — especially above about 80% — and cold batteries charge slowly. Your car's onboard charger and the station's output limit the power, whichever is lower.</p><h3 class="font-semibold text-slate-200 pt-2">Choosing a charger</h3><p>For overnight home charging a Level 2 charger is plenty. For road trips, plan on charging from about 10% to 80% at a DC fast charger. Learn more in our <a class="text-[#00BFFF] underline" href="ev-charging-guide-2026.html">home vs public charging guide</a> and <a class="text-[#00BFFF] underline" href="how-to-charge-ev-at-home-2026.html">home charger setup guide</a>.</p><h3 class="font-semibold text-slate-200 pt-2">Frequently asked questions</h3><div><p class="font-medium text-slate-300">Why does charging from 80% to 100% take so long?</p><p>Batteries reduce power near full to protect cell health, so the last portion charges much more slowly.</p></div><div><p class="font-medium text-slate-300">Does cold weather affect charging?</p><p>Yes. Cold batteries accept less power until they warm up, so winter charging usually takes longer.</p></div><p class="text-xs text-slate-500 pt-2">Results are estimates for planning only and not financial, tax or legal advice. Read our <a class="text-[#00BFFF] underline" href="editorial-policy.html">editorial policy</a>.</p></section></main>
+
+<footer class="border-t border-[#1C2433] bg-[#0D1117] py-8 text-center text-xs text-slate-600">
+  © 2026 Wattlab ·
+  <a href="index.html" class="hover:text-[#00BFFF]">Home</a> ·
+  <a href="tools-hub.html" class="hover:text-[#00BFFF]">All EV Tools</a> ·
+  <a href="calculator.html" class="hover:text-[#00BFFF]">Savings Calculator</a>
+<p class="text-xs text-slate-500 mt-3 footer-legal"><a href="privacy-policy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="editorial-policy.html">Editorial Policy</a> · <a href="contact.html">Contact</a></p>
+</footer>
+
+<script>
+// ── Car Database by Country ──
+const CARS = {
+  usa: [
+    {name:"Tesla Model 3 Long Range",kwh:82},
+    {name:"Tesla Model 3 Standard",kwh:60},
+    {name:"Tesla Model S Long Range",kwh:100},
+    {name:"Tesla Model X Long Range",kwh:100},
+    {name:"Tesla Model Y Long Range",kwh:82},
+    {name:"Tesla Model Y Standard",kwh:57},
+    {name:"Tesla Cybertruck AWD",kwh:123},
+    {name:"Ford F-150 Lightning Extended",kwh:131},
+    {name:"Ford F-150 Lightning Standard",kwh:98},
+    {name:"Ford Mustang Mach-E",kwh:91},
+    {name:"Rivian R1T Adventure",kwh:135},
+    {name:"Rivian R1S Adventure",kwh:135},
+    {name:"Chevy Bolt EV",kwh:65},
+    {name:"Chevy Silverado EV",kwh:200},
+    {name:"GMC Hummer EV",kwh:212},
+    {name:"Hyundai Ioniq 6 Long Range",kwh:77},
+    {name:"Hyundai Ioniq 5 Long Range",kwh:77},
+    {name:"Kia EV6 Long Range",kwh:77},
+    {name:"BMW iX xDrive50",kwh:111},
+    {name:"Lucid Air Grand Touring",kwh:118},
+    {name:"Mercedes EQS 450+",kwh:107},
+    {name:"Nissan Ariya e-4ORCE",kwh:87},
+    {name:"Volkswagen ID.4 Pro",kwh:82},
+    {name:"Audi Q8 e-tron",kwh:114},
+    {name:"Porsche Taycan 4S",kwh:93},
+  ],
+  europe: [
+    {name:"Tesla Model 3 Long Range",kwh:82},
+    {name:"Tesla Model Y Long Range",kwh:82},
+    {name:"Volkswagen ID.3 Pro",kwh:58},
+    {name:"Volkswagen ID.4 Pro",kwh:82},
+    {name:"Volkswagen ID.7",kwh:86},
+    {name:"BMW i4 eDrive40",kwh:83},
+    {name:"BMW iX3",kwh:80},
+    {name:"Audi Q4 e-tron",kwh:82},
+    {name:"Mercedes EQA 250",kwh:66},
+    {name:"Mercedes EQC 400",kwh:80},
+    {name:"Renault Megane E-Tech",kwh:60},
+    {name:"Peugeot e-208",kwh:51},
+    {name:"Hyundai Ioniq 5",kwh:77},
+    {name:"Kia EV6",kwh:77},
+    {name:"Porsche Taycan",kwh:93},
+    {name:"Volvo EX40",kwh:82},
+    {name:"Skoda Enyaq iV",kwh:82},
+    {name:"Fiat 500e",kwh:42},
+    {name:"MINI Electric",kwh:33},
+    {name:"Opel/Vauxhall Mokka-e",kwh:50},
+  ],
+  uk: [
+    {name:"Tesla Model 3 Long Range",kwh:82},
+    {name:"Tesla Model Y Long Range",kwh:82},
+    {name:"Volkswagen ID.3",kwh:58},
+    {name:"Volkswagen ID.4",kwh:82},
+    {name:"BMW i4",kwh:83},
+    {name:"Nissan Leaf e+",kwh:62},
+    {name:"Hyundai Ioniq 5",kwh:77},
+    {name:"Kia EV6",kwh:77},
+    {name:"MG ZS EV",kwh:72},
+    {name:"Vauxhall Mokka-e",kwh:50},
+    {name:"Renault Zoe",kwh:52},
+    {name:"MINI Electric",kwh:33},
+    {name:"Polestar 2",kwh:82},
+    {name:"Audi Q4 e-tron",kwh:82},
+  ],
+  china: [
+    {name:"BYD Han EV",kwh:85},
+    {name:"BYD Atto 3",kwh:60},
+    {name:"BYD Dolphin",kwh:44},
+    {name:"BYD Seal",kwh:82},
+    {name:"NIO ET5",kwh:100},
+    {name:"NIO ES6",kwh:100},
+    {name:"Xpeng P7",kwh:80},
+    {name:"Xpeng G9",kwh:98},
+    {name:"Li Auto L9",kwh:44},
+    {name:"AITO M9",kwh:52},
+    {name:"Zeekr 001",kwh:100},
+    {name:"Tesla Model 3 (China)",kwh:75},
+    {name:"Tesla Model Y (China)",kwh:75},
+    {name:"SAIC MG4",kwh:64},
+  ],
+  other: [
+    {name:"Tesla Model 3",kwh:82},
+    {name:"Tesla Model Y",kwh:82},
+    {name:"Nissan Leaf",kwh:40},
+    {name:"Hyundai Ioniq 5",kwh:77},
+    {name:"Kia EV6",kwh:77},
+    {name:"BYD Atto 3",kwh:60},
+    {name:"MG ZS EV",kwh:72},
+    {name:"Volkswagen ID.4",kwh:82},
+    {name:"BMW iX3",kwh:80},
+    {name:"Custom Car",kwh:60},
+  ]
+};
+
+// ── Charger standards by country ──
+const CHARGERS = {
+  usa: [
+    {icon:"🔌", name:"Level 1", sub:"120V NEMA 5-15", kw:1.4},
+    {icon:"⚡", name:"Level 2", sub:"240V J1772", kw:7.2},
+    {icon:"⚡", name:"Level 2 Fast", sub:"240V 11.5kW", kw:11.5},
+    {icon:"🚀", name:"CCS Fast", sub:"DC 50kW", kw:50},
+    {icon:"🚀", name:"CCS Ultra", sub:"DC 150kW", kw:150},
+    {icon:"⚡⚡", name:"Supercharger V3", sub:"Tesla 250kW", kw:250},
+  ],
+  europe: [
+    {icon:"🔌", name:"Schuko", sub:"230V 2.3kW", kw:2.3},
+    {icon:"⚡", name:"Type 2 AC", sub:"7.4kW single-phase", kw:7.4},
+    {icon:"⚡", name:"Type 2 Fast", sub:"22kW 3-phase", kw:22},
+    {icon:"🚀", name:"CCS Combo 2", sub:"DC 50kW", kw:50},
+    {icon:"🚀", name:"CCS Ultra", sub:"DC 150kW+", kw:150},
+    {icon:"⚡⚡", name:"Supercharger V3", sub:"Tesla 250kW", kw:250},
+  ],
+  uk: [
+    {icon:"🔌", name:"3-pin Plug", sub:"230V 2.3kW", kw:2.3},
+    {icon:"⚡", name:"Type 2 AC", sub:"7kW home", kw:7},
+    {icon:"⚡", name:"Type 2 Fast", sub:"22kW public", kw:22},
+    {icon:"🚀", name:"CCS Rapid", sub:"DC 50kW", kw:50},
+    {icon:"🚀", name:"CCS Ultra", sub:"DC 150kW", kw:150},
+    {icon:"⚡⚡", name:"Supercharger V3", sub:"Tesla 250kW", kw:250},
+  ],
+  china: [
+    {icon:"🔌", name:"GB/T AC Slow", sub:"220V 3.5kW", kw:3.5},
+    {icon:"⚡", name:"GB/T AC Fast", sub:"7kW", kw:7},
+    {icon:"🚀", name:"GB/T DC", sub:"60kW", kw:60},
+    {icon:"🚀", name:"GB/T DC Fast", sub:"120kW", kw:120},
+    {icon:"⚡⚡", name:"Supercharger V3", sub:"250kW", kw:250},
+  ],
+  australia: [
+    {icon:"🔌", name:"Standard 10A", sub:"230V 2.4kW", kw:2.4},
+    {icon:"⚡", name:"Type 2 AC", sub:"7.4kW", kw:7.4},
+    {icon:"⚡", name:"Type 2 Fast", sub:"22kW", kw:22},
+    {icon:"🚀", name:"CHAdeMO/CCS", sub:"50kW", kw:50},
+    {icon:"🚀", name:"DC Fast", sub:"150kW", kw:150},
+    {icon:"⚡⚡", name:"Supercharger V3", sub:"250kW", kw:250},
+  ],
+  canada: [
+    {icon:"🔌", name:"Level 1", sub:"120V 1.4kW", kw:1.4},
+    {icon:"⚡", name:"Level 2", sub:"240V J1772 7.2kW", kw:7.2},
+    {icon:"🚀", name:"DC Fast (CCS)", sub:"50kW", kw:50},
+    {icon:"🚀", name:"DC Ultra", sub:"150kW", kw:150},
+    {icon:"⚡⚡", name:"Supercharger V3", sub:"250kW", kw:250},
+  ],
+  japan: [
+    {icon:"🔌", name:"100V AC", sub:"1.4kW slow", kw:1.4},
+    {icon:"⚡", name:"200V AC", sub:"3kW home", kw:3},
+    {icon:"🚀", name:"CHAdeMO", sub:"DC 50kW", kw:50},
+    {icon:"🚀", name:"CHAdeMO Fast", sub:"DC 100kW", kw:100},
+    {icon:"⚡⚡", name:"Supercharger V3", sub:"250kW", kw:250},
+  ],
+  other: [
+    {icon:"🔌", name:"Standard AC", sub:"2-3kW", kw:2.3},
+    {icon:"⚡", name:"Level 2 AC", sub:"7kW", kw:7},
+    {icon:"🚀", name:"DC Fast", sub:"50kW", kw:50},
+    {icon:"🚀", name:"DC Ultra", sub:"150kW", kw:150},
+    {icon:"⚡⚡", name:"Supercharger V3", sub:"250kW", kw:250},
+  ]
+};
+
+const COUNTRY_INFO = {
+  usa: "USA uses CCS1 (Combined Charging System) and Tesla NACS connectors. Most public stations use J1772 for AC and CCS for DC fast charging. Tesla Superchargers now open to non-Tesla EVs via adapter.",
+  europe: "Europe uses Type 2 (Mennekes) for AC charging and CCS2 for DC fast charging. The EU mandates CCS2 as the standard connector. Ionity network offers ultra-fast 350kW charging.",
+  uk: "UK uses Type 2 and CCS. Rapid chargers (50kW+) are widely available on motorways. The UK has over 50,000 public charge points. Zap-Map is the best app to find chargers.",
+  china: "China uses GB/T standard for both AC and DC charging. NIO offers battery swap stations (3 min full charge equivalent). CATL and BYD blade battery tech charges faster than most.",
+  australia: "Australia uses Type 2 and CCS connectors. The NRMA and Chargefox networks cover major highways. Australia has a fast-growing EV infrastructure especially on the east coast.",
+  canada: "Canada uses J1772 and CCS1 (same as USA). ChargePoint and FLO are the main networks. Level 2 is common in urban areas. DC fast charging growing on Trans-Canada Highway.",
+  japan: "Japan uses CHAdeMO for DC fast charging — unique to Japan/Korea. New EVs moving toward CCS globally. CHAdeMO supports V2G (vehicle-to-grid) technology.",
+  other: "Check your local connector standard — CCS2 (Europe/Korea), CCS1 (USA/Canada), GB/T (China), or CHAdeMO (Japan). Most modern EVs support multiple standards via adapters."
+};
+
+let selectedKw = null;
+let selectedLabel = '';
+let activeTab = 'preset';
+
+function switchTab(tab, btn) {
+  activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-preset').classList.toggle('hidden', tab !== 'preset');
+  document.getElementById('tab-custom').classList.toggle('hidden', tab !== 'custom');
+}
+
+function filterCars() {
+  const country = document.getElementById('carCountry').value;
+  const sel = document.getElementById('carPreset');
+  sel.innerHTML = '<option value="">— Choose your car —</option>';
+  const list = country === 'all'
+    ? Object.values(CARS).flat()
+    : (CARS[country] || CARS.other);
+  list.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c.kwh;
+    o.textContent = `${c.name} (${c.kwh} kWh)`;
+    sel.appendChild(o);
+  });
+}
+
+function applyPreset() {
+  const val = document.getElementById('carPreset').value;
+  if (val) document.getElementById('batterySize') && null;
+  window._presetKwh = val ? parseFloat(val) : null;
+  window._presetName = document.getElementById('carPreset').options[document.getElementById('carPreset').selectedIndex]?.text || '';
+}
+
+function updateChargers() {
+  const country = document.getElementById('chargerCountry').value;
+  const chargers = CHARGERS[country] || CHARGERS.other;
+  const grid = document.getElementById('chargerGrid');
+  grid.innerHTML = chargers.map((c, i) => `
+    <div class="charger-card p-4 text-center ${i===1?'selected':''}" onclick="selectCharger(this, ${c.kw}, '${c.name}')">
+      <div class="text-2xl mb-1">${c.icon}</div>
+      <div class="font-bold text-xs mb-0.5">${c.name}</div>
+      <div class="text-xs text-[#00BFFF] font-mono">${c.kw} kW</div>
+      <div class="text-xs text-slate-500 mt-0.5">${c.sub}</div>
+    </div>`).join('');
+  // Select second charger by default (Level 2)
+  const cards = grid.querySelectorAll('.charger-card');
+  if (cards[1]) { selectedKw = chargers[1].kw; selectedLabel = chargers[1].name; }
+}
+
+function selectCharger(el, kw, label) {
+  document.querySelectorAll('.charger-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedKw = kw;
+  selectedLabel = label;
+  document.getElementById('customKw').value = '';
+}
+
+function clearChargerSelection() {
+  document.querySelectorAll('.charger-card').forEach(c => c.classList.remove('selected'));
+  selectedKw = null;
+}
+
+function setLevels(from, to) {
+  document.getElementById('currentLevel').value = from;
+  document.getElementById('targetLevel').value = to;
+}
+
+function formatTime(hours) {
+  if (hours < 1/60) return 'Under 1 min';
+  const totalMins = Math.round(hours * 60);
+  const h = Math.floor(totalMins / 60);
+  const m = totalMins % 60;
+  if (h === 0) return `${m} min`;
+  if (m === 0) return `${h} hr`;
+  return `${h} hr ${m} min`;
+}
+
+function calculate() {
+  const customKwInput = parseFloat(document.getElementById('customKw').value);
+  const chargerKw = customKwInput || selectedKw;
+  const chargerName = customKwInput ? `Custom (${customKwInput} kW)` : selectedLabel;
+
+  // Get battery from preset or custom
+  let battery, carName;
+  if (activeTab === 'preset' && window._presetKwh) {
+    battery = window._presetKwh;
+    carName = window._presetName;
+  } else {
+    battery = parseFloat(document.getElementById('batterySize')?.value);
+    carName = document.getElementById('customCarName')?.value || 'Your EV';
+  }
+
+  const efficiency = parseFloat(document.getElementById('efficiency').value) / 100 || 0.9;
+  const current = parseFloat(document.getElementById('currentLevel').value);
+  const target = parseFloat(document.getElementById('targetLevel').value);
+  const chargerCountry = document.getElementById('chargerCountry').value;
+
+  if (!battery || isNaN(battery) || battery <= 0) { alert('Please select a car or enter battery size!'); return; }
+  if (isNaN(current) || isNaN(target)) { alert('Please enter battery levels!'); return; }
+  if (current >= target) { alert('Target must be higher than current level!'); return; }
+  if (!chargerKw) { alert('Please select a charger type!'); return; }
+
+  const kwhNeeded = battery * (target - current) / 100;
+  const effectiveKw = chargerKw * efficiency;
+  const hours = kwhNeeded / effectiveKw;
+
+  document.getElementById('results').classList.remove('hidden');
+  document.getElementById('mainTime').textContent = formatTime(hours);
+  document.getElementById('carLabel').textContent = `🚗 ${carName} · ${battery} kWh`;
+  document.getElementById('chargerLabel').textContent = `⚡ ${chargerName} · ${chargerKw} kW`;
+  document.getElementById('fromPct').textContent = `${current}%`;
+  document.getElementById('toPct').textContent = `${target}%`;
+  document.getElementById('kwhNeeded').textContent = `${kwhNeeded.toFixed(1)} kWh needed`;
+
+  setTimeout(() => { document.getElementById('progressBar').style.width = `${target - current}%`; }, 100);
+
+  // Comparison
+  const countryChargers = CHARGERS[chargerCountry] || CHARGERS.other;
+  const maxH = kwhNeeded / (countryChargers[0].kw * efficiency);
+  let html = '';
+  countryChargers.forEach(c => {
+    const h = kwhNeeded / (c.kw * efficiency);
+    const pct = Math.min((maxH / h) * 100, 100);
+    const isSelected = Math.abs(c.kw - chargerKw) < 0.5;
+    html += `
+      <div class="flex items-center gap-3 ${isSelected ? 'text-[#00BFFF]' : 'text-slate-300'}">
+        <span class="text-sm w-40 shrink-0">${c.icon} ${c.name}</span>
+        <div class="flex-1 bg-[#1C2433] rounded-full h-2 overflow-hidden">
+          <div class="h-2 rounded-full bg-[#00BFFF] transition-all duration-700" style="width:${pct}%;opacity:${isSelected?1:0.5}"></div>
+        </div>
+        <span class="text-sm font-mono w-20 text-right ${isSelected?'font-bold':''}">${formatTime(h)}</span>
+      </div>`;
+  });
+  document.getElementById('comparisonGrid').innerHTML = html;
+  document.getElementById('countryInfo').textContent = COUNTRY_INFO[chargerCountry] || COUNTRY_INFO.other;
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Init
+filterCars();
+updateChargers();
+</script>
+</body>
+</html>

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<script src="js/consent.js?v=3"></script>
+<meta name="google-site-verification" content="google6a08c7dbfdb2fb30">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EV Savings Calculator: EV vs Gas Costs | Wattlab</title>
+<meta name="description" content="Estimate how much you could save on fuel and maintenance by switching from a gas car to an electric vehicle. Free EV savings calculator.">
+  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #080C10; color: #e2e8f0; }
+    .neon-text { color: #00BFFF; }
+    .grad-line { background: linear-gradient(90deg, transparent, #00BFFF, transparent); height: 1px; }
+    .hero-bg { background: radial-gradient(ellipse 70% 50% at 50% -5%, rgba(0,191,255,0.10) 0%, transparent 65%); }
+
+    /* Input styles */
+    .calc-input, .calc-select {
+      background: #111827;
+      border: 1px solid #1C2433;
+      border-radius: 0.625rem;
+      color: #e2e8f0;
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.95rem;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .calc-input:focus, .calc-select:focus {
+      border-color: #00BFFF;
+      box-shadow: 0 0 0 3px rgba(0,191,255,0.12);
+    }
+    .calc-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300BFFF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.9rem center;
+      padding-right: 2.5rem;
+    }
+    .calc-select option { background: #0D1117; color: #e2e8f0; }
+
+    /* Input number spinner hide */
+    .calc-input[type=number]::-webkit-inner-spin-button,
+    .calc-input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    .calc-input[type=number] { -moz-appearance: textfield; }
+
+    /* Result cards */
+    .result-card {
+      background: #0D1117;
+      border: 1px solid #1C2433;
+      border-radius: 1rem;
+      transition: border-color 0.2s;
+    }
+    .result-card.active { border-color: rgba(0,191,255,0.5); }
+    .result-card.highlight {
+      border-color: #00BFFF;
+      box-shadow: 0 0 24px rgba(0,191,255,0.2);
+    }
+
+    /* Bar chart */
+    .bar-track {
+      background: #1C2433;
+      border-radius: 99px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* CTA pulse */
+    .cta-pulse { animation: ctaPulse 3s ease-in-out infinite; }
+    @keyframes ctaPulse {
+      0%, 100% { box-shadow: 0 0 16px rgba(0,191,255,0.35); }
+      50% { box-shadow: 0 0 36px rgba(0,191,255,0.6); }
+    }
+
+    /* Tooltip */
+    .tooltip-trigger { position: relative; cursor: help; }
+    .tooltip-trigger:hover .tooltip-box { display: block; }
+    .tooltip-box {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1C2433;
+      border: 1px solid rgba(0,191,255,0.3);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 11px;
+      color: #94a3b8;
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    /* Section fade in */
+    .fade-in { animation: fadeIn 0.4s ease both; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    .nav-link { transition: color 0.15s; }
+    .nav-link:hover { color: #00BFFF; }
+
+    label { display: block; font-size: 0.8rem; font-weight: 500; color: #94a3b8; margin-bottom: 0.4rem; letter-spacing: 0.01em; }
+  </style>
+<meta name="google-adsense-account" content="ca-pub-1460692736386027">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQQS92H7YB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VQQS92H7YB');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1460692736386027" crossorigin="anonymous"></script>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#00E5FF">
+<link rel="canonical" href="https://wattlabtech.netlify.app/calculator.html">
+<link rel="alternate" hreflang="x-default" href="https://wattlabtech.netlify.app/calculator.html">
+<link rel="alternate" hreflang="en" href="https://wattlabtech.netlify.app/calculator.html">
+<link rel="stylesheet" href="css/tw-tools.css?v=3">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wattlab">
+<meta property="og:title" content="EV Savings Calculator: EV vs Gas Costs | Wattlab">
+<meta property="og:description" content="Estimate how much you could save on fuel and maintenance by switching from a gas car to an electric vehicle. Free EV savings calculator.">
+<meta property="og:url" content="https://wattlabtech.netlify.app/calculator.html">
+<meta property="og:image" content="https://wattlabtech.netlify.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EV Savings Calculator: EV vs Gas Costs | Wattlab">
+<meta name="twitter:description" content="Estimate how much you could save on fuel and maintenance by switching from a gas car to an electric vehicle. Free EV savings calculator.">
+<meta name="twitter:image" content="https://wattlabtech.netlify.app/assets/og-image.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://wattlabtech.netlify.app/"}, {"@type": "ListItem", "position": 2, "name": "EV Savings Calculator: EV vs Gas Costs", "item": "https://wattlabtech.netlify.app/calculator.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "EV Savings Calculator: EV vs Gas Costs", "url": "https://wattlabtech.netlify.app/calculator.html", "description": "", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Wattlab"}}</script>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 border-b border-dark-border bg-dark-base/90 backdrop-blur-md">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M4 20 Q14 4 24 20" stroke="#00BFFF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="14" cy="20" r="3" fill="#00BFFF"/>
+          <path d="M9 20 h10" stroke="#1C2433" stroke-width="2"/>
+        </svg>
+        <span class="font-bold text-lg tracking-tight">Watt<span class="neon-text">lab</span></span>
+      </a>
+      <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-400">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="ev-news.html" class="nav-link">EV News</a></li>
+        <li><a href="car-reviews.html" class="nav-link">Car Reviews</a></li>
+        <li><a href="tools-hub.html" class="nav-link">⚡ EV Tools</a></li>
+        <li><a href="calculator.html" class="nav-link neon-text font-semibold flex items-center gap-1.5">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M3 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm1 3h2v2H4V4Zm0 3h2v2H4V7Zm0 3h2v2H4v-2Zm3-6h2v2H7V4Zm0 3h2v2H7V7Zm0 3h4v2H7v-2Zm3-6h2v5h-2V4Z"/></svg>
+          Savings Calculator
+        </a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+      <button id="mobile-menu-btn" class="md:hidden text-slate-400 hover:text-white p-1">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h16M3 12h16M3 18h16"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="md:hidden hidden border-t border-dark-border bg-dark-base">
+      <ul class="flex flex-col px-4 py-3 gap-3 text-sm font-medium text-slate-400">
+        <li><a href="index.html" class="nav-link block py-1">Home</a></li>
+        <li><a href="index.html#models" class="nav-link block py-1">Models</a></li>
+        <li><a href="calculator.html" class="nav-link block py-1 neon-text font-semibold">⚡ Savings Calculator</a></li>
+        <li><a href="index.html#about" class="nav-link block py-1">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="hero-bg">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-24">
+
+      <!-- Page header -->
+      <div class="mb-10">
+        <a href="index.html" class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-neon transition-colors mb-5">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M9.707 16.707a1 1 0 0 1-1.414 0l-6-6a1 1 0 0 1 0-1.414l6-6a1 1 0 0 1 1.414 1.414L5.414 9H17a1 1 0 1 1 0 2H5.414l4.293 4.293a1 1 0 0 1 0 1.414Z"/></svg>
+          Back to Home
+        </a>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-6 h-px bg-neon"></span>
+          <span class="text-xs font-mono text-neon tracking-widest uppercase">Free Tool</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3">EV Savings Calculator</h1>
+        <p class="text-slate-400 max-w-xl">Fill in your details and see exactly how much switching to an electric vehicle saves you — monthly, yearly, and in CO₂.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-6">
+
+        <!-- ===== INPUTS PANEL ===== -->
+        <div class="lg:col-span-2 bg-dark-card border border-dark-border rounded-2xl p-6 sm:p-7 flex flex-col gap-6">
+
+          <!-- State -->
+          <div>
+            <label for="state-select">Your Location (US State or European Country)
+              <span class="tooltip-trigger inline-block ml-1 align-middle">
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="#475569"><circle cx="8" cy="8" r="7" stroke="#475569" stroke-width="1.5" fill="none"/><path d="M8 7v5M8 5v.5" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span class="tooltip-box">Sets electricity rate &amp; currency for your location</span>
+              </span>
+            </label>
+            <select id="state-select" class="calc-select">
+              <option value="">— Choose your location —</option>
+            </select>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-xs text-slate-500">Avg electricity rate:</span>
+              <span id="rate-display" class="text-xs font-mono text-neon">— ¢/kWh</span>
+            </div>
+          </div>
+
+          <div class="grad-line opacity-40"></div>
+
+          <!-- Daily miles -->
+          <div>
+            <label for="daily-miles">Daily Miles Driven</label>
+            <div class="relative">
+              <input id="daily-miles" type="number" class="calc-input pr-14" placeholder="35" min="1" max="999" value="35" />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 font-mono pointer-events-none">mi/day</span>
+            </div>
+          </div>
+
+          <!-- Gas price -->
+          <div>
+            <label for="gas-price" id="gas-price-label">Fuel Price per Gallon</label>
+            <div class="relative">
+              <span id="gas-currency-symbol" class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">$</span>
+              <input id="gas-price" type="number" class="calc-input pl-6 pr-4" placeholder="3.50" step="0.01" min="0.1" max="50" value="3.50" />
+            </div>
+          </div>
+
+          <!-- Current MPG -->
+          <div>
+            <label for="car-mpg">Current Car Fuel Economy</label>
+            <div class="relative">
+              <input id="car-mpg" type="number" class="calc-input pr-12" placeholder="28" min="5" max="100" value="28" />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 font-mono pointer-events-none">MPG</span>
+            </div>
+          </div>
+
+          <div class="grad-line opacity-40"></div>
+
+          <!-- EV Model -->
+          <div>
+            <label for="ev-model">EV Model You're Considering</label>
+            <select id="ev-model" class="calc-select">
+              <option value="model3">Tesla Model 3 — 4.0 mi/kWh</option>
+              <option value="modely">Tesla Model Y — 3.5 mi/kWh</option>
+              <option value="ioniq5">Hyundai Ioniq 5 — 3.2 mi/kWh</option>
+              <option value="mache">Ford Mustang Mach-E — 3.3 mi/kWh</option>
+              <option value="custom">Custom efficiency…</option>
+            </select>
+          </div>
+
+          <!-- Custom efficiency (hidden by default) -->
+          <div id="custom-eff-wrap" class="hidden">
+            <label for="custom-eff">Custom EV Efficiency</label>
+            <div class="relative">
+              <input id="custom-eff" type="number" class="calc-input pr-16" placeholder="3.5" step="0.1" min="1" max="10" value="3.5" />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 font-mono pointer-events-none">mi/kWh</span>
+            </div>
+          </div>
+
+          <!-- Selected EV efficiency display -->
+          <div id="ev-eff-display" class="flex justify-between items-center -mt-3">
+            <span class="text-xs text-slate-500">EV efficiency:</span>
+            <span id="eff-value" class="text-xs font-mono text-neon">4.0 mi/kWh</span>
+          </div>
+
+          <!-- Calculate button -->
+          <button id="calc-btn" class="mt-2 w-full bg-neon text-dark-base font-bold py-3.5 rounded-xl cta-pulse text-sm flex items-center justify-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm1 3h2v2H4V4Zm0 3h2v2H4V7Zm0 3h2v2H4v-2Zm3-6h2v2H7V4Zm0 3h2v2H7V7Zm0 3h4v2H7v-2Zm3-6h2v5h-2V4Z"/></svg>
+            Calculate My Savings
+          </button>
+
+          <p class="text-xs text-slate-600 text-center -mt-2">Results update instantly as you type</p>
+        </div>
+
+        <!-- ===== RESULTS PANEL ===== -->
+        <div id="results-panel" class="lg:col-span-3 flex flex-col gap-5">
+
+          <!-- Empty state -->
+          <div id="empty-state" class="flex flex-col items-center justify-center h-full min-h-[340px] text-center p-8 bg-dark-card border border-dark-border rounded-2xl">
+            <div class="w-16 h-16 rounded-full bg-neon/10 flex items-center justify-center mb-5">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M6 26 Q16 6 26 26" stroke="#00BFFF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <circle cx="16" cy="26" r="3.5" fill="#00BFFF"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Fill in your details</h3>
+            <p class="text-slate-500 text-sm max-w-xs">Select your state and driving habits on the left to see your personalized EV savings breakdown.</p>
+          </div>
+
+          <!-- Results (hidden until calculated) -->
+          <div id="results-content" class="hidden fade-in flex flex-col gap-5">
+
+            <!-- Top summary row -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="result-card highlight p-5">
+                <div class="text-xs text-slate-500 mb-1">Monthly Savings</div>
+                <div id="monthly-savings" class="text-3xl font-extrabold neon-text stat-number">$—</div>
+                <div class="text-xs text-slate-500 mt-1">switching to EV</div>
+              </div>
+              <div class="result-card highlight p-5">
+                <div class="text-xs text-slate-500 mb-1">Yearly Savings</div>
+                <div id="yearly-savings" class="text-3xl font-extrabold neon-text stat-number">$—</div>
+                <div class="text-xs text-slate-500 mt-1">per year</div>
+              </div>
+            </div>
+
+            <!-- Monthly cost comparison -->
+            <div class="result-card active p-6">
+              <div class="text-sm font-semibold mb-5 flex items-center gap-2">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="#00BFFF"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Zm0 11.5A4.5 4.5 0 1 1 8 3.5a4.5 4.5 0 0 1 0 9Z"/></svg>
+                Monthly Cost Comparison
+              </div>
+              <!-- Gas bar -->
+              <div class="mb-4">
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-sm text-slate-400 flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-orange-400 inline-block"></span>
+                    Gas cost (current car)
+                  </span>
+                  <span id="monthly-gas" class="text-sm font-mono font-semibold text-orange-400">$—</span>
+                </div>
+                <div class="bar-track">
+                  <div id="gas-bar" class="bar-fill bg-orange-400" style="width:0%"></div>
+                </div>
+              </div>
+              <!-- EV bar -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-sm text-slate-400 flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-neon inline-block" style="background:#00BFFF"></span>
+                    Charging cost (EV)
+                  </span>
+                  <span id="monthly-ev" class="text-sm font-mono font-semibold neon-text">$—</span>
+                </div>
+                <div class="bar-track">
+                  <div id="ev-bar" class="bar-fill" style="width:0%; background:#00BFFF"></div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-dark-border flex justify-between text-xs text-slate-500">
+                <span>Based on <span id="monthly-miles-display">—</span> miles/month</span>
+                <span id="rate-used-display">—¢/kWh</span>
+              </div>
+            </div>
+
+            <!-- CO2 + 5-year savings -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="result-card active p-5">
+                <div class="flex items-start gap-2 mb-3">
+                  <svg class="shrink-0 mt-0.5" width="18" height="18" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="8.5" stroke="#22c55e" stroke-width="1.5"/>
+                    <path d="M7 10.5c1 1.5 3 1.5 4 0s3-1.5 4 0" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                  </svg>
+                  <div>
+                    <div class="text-xs text-slate-500 mb-0.5">CO₂ Saved / Year</div>
+                    <div id="co2-saved" class="text-2xl font-bold text-green-400 stat-number">—</div>
+                    <div class="text-xs text-slate-500">lbs of CO₂</div>
+                  </div>
+                </div>
+                <div class="text-xs text-slate-600 leading-relaxed">Equivalent to planting <span id="trees-equiv" class="text-green-400 font-semibold">—</span> trees per year</div>
+              </div>
+              <div class="result-card active p-5">
+                <div class="text-xs text-slate-500 mb-1">5-Year Total Savings</div>
+                <div id="five-year-savings" class="text-2xl font-bold stat-number" style="color:#00BFFF">$—</div>
+                <div class="text-xs text-slate-500 mt-1">fuel costs only</div>
+                <div class="mt-3 text-xs text-slate-600">Plus any state or utility EV incentives you can verify</div>
+              </div>
+            </div>
+
+            <!-- Assumptions -->
+            <div class="bg-dark-card border border-dark-border rounded-xl p-5">
+              <div class="text-xs font-semibold text-slate-400 mb-3 uppercase tracking-widest">Your inputs</div>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2 text-xs font-mono">
+                <div class="flex justify-between gap-2"><span class="text-slate-500">State</span><span id="summary-state" class="text-slate-300 text-right">—</span></div>
+                <div class="flex justify-between gap-2"><span class="text-slate-500">Electricity</span><span id="summary-rate" class="text-neon text-right">—</span></div>
+                <div class="flex justify-between gap-2"><span class="text-slate-500">Miles/day</span><span id="summary-miles" class="text-slate-300 text-right">—</span></div>
+                <div class="flex justify-between gap-2"><span class="text-slate-500">Gas price</span><span id="summary-gas" class="text-orange-400 text-right">—</span></div>
+                <div class="flex justify-between gap-2"><span class="text-slate-500">Car MPG</span><span id="summary-mpg" class="text-slate-300 text-right">—</span></div>
+                <div class="flex justify-between gap-2"><span class="text-slate-500">EV eff.</span><span id="summary-eff" class="text-neon text-right">—</span></div>
+              </div>
+            </div>
+
+            <!-- Share / reset row -->
+            <div class="flex gap-3">
+              <button id="reset-btn" class="flex-1 border border-dark-border text-slate-400 hover:border-neon hover:text-neon py-2.5 rounded-xl text-sm font-medium transition-colors">
+                Reset
+              </button>
+              <button id="share-btn" class="flex-1 border border-neon/50 text-neon hover:bg-neon/10 py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M15 8a3 3 0 1 0-2.977-2.63l-4.94 2.47a3 3 0 1 0 0 4.319l4.94 2.47a3 3 0 1 0 .895-1.789l-4.94-2.47a3.027 3.027 0 0 0 0-.74l4.94-2.47C13.456 7.68 14.19 8 15 8Z"/></svg>
+                Copy Results
+              </button>
+            </div>
+            <div id="share-toast" class="hidden text-center text-xs text-green-400 font-mono -mt-2">✓ Results copied to clipboard</div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- How it works -->
+      <div class="mt-16">
+        <div class="grad-line mb-10"></div>
+        <div class="mb-8">
+          <span class="text-xs font-mono text-neon tracking-widest uppercase">Methodology</span>
+          <h2 class="text-2xl font-bold mt-2">How the numbers are calculated</h2>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-6 text-sm text-slate-400">
+          <div class="bg-dark-card border border-dark-border rounded-xl p-5">
+            <div class="text-neon font-mono text-lg font-bold mb-2">01</div>
+            <div class="font-semibold text-white mb-1">Monthly Gas Cost</div>
+            <p class="leading-relaxed">(Daily miles × 30.5 days) ÷ MPG × gas price. This is what you're spending on fuel right now.</p>
+          </div>
+          <div class="bg-dark-card border border-dark-border rounded-xl p-5">
+            <div class="text-neon font-mono text-lg font-bold mb-2">02</div>
+            <div class="font-semibold text-white mb-1">Monthly Charging Cost</div>
+            <p class="leading-relaxed">(Daily miles × 30.5) ÷ mi/kWh × your state's electricity rate. Assumes primarily home charging.</p>
+          </div>
+          <div class="bg-dark-card border border-dark-border rounded-xl p-5">
+            <div class="text-neon font-mono text-lg font-bold mb-2">03</div>
+            <div class="font-semibold text-white mb-1">CO₂ Calculation</div>
+            <p class="leading-relaxed">US average of 19.6 lbs CO₂ per gallon of gas burned. EV grid emissions vary; we use the US average grid factor (0.92 lbs/kWh) for EV offset.</p>
+          </div>
+        </div>
+        <p class="mt-5 text-xs text-slate-600 max-w-2xl">Disclaimer: Calculations are estimates for informational purposes. Actual savings depend on your specific driving patterns, utility rate schedule, EV charging behavior, and vehicle condition. Electricity rates sourced from US EIA data (2025–2026 averages).</p>
+      </div>
+
+    </div>
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-20 text-sm text-slate-400 leading-relaxed space-y-3" aria-label="About this calculator"><h2 class="text-lg font-bold text-white">How the EV savings calculator works</h2><h3 class="font-semibold text-slate-200 pt-2">The calculation</h3><p>Yearly savings = gas car running cost − EV running cost. Gas car cost is miles driven ÷ miles per gallon × gas price, plus maintenance. EV cost is miles driven ÷ miles per kWh × electricity price, plus maintenance.</p><h3 class="font-semibold text-slate-200 pt-2">Where to get realistic inputs</h3><p>Look up a car's fuel economy and efficiency on fueleconomy.gov, check average energy prices from the U.S. Energy Information Administration (eia.gov), and use the rate on your own electricity bill for the most accurate result.</p><h3 class="font-semibold text-slate-200 pt-2">Limits</h3><p>The calculator does not include purchase price, depreciation, insurance or the cost of a home charger. Combine it with our <a class="text-[#00BFFF] underline" href="tco.html">5-year TCO calculator</a> and our guide to <a class="text-[#00BFFF] underline" href="how-to-charge-ev-at-home-2026.html">home charging</a>.</p><h3 class="font-semibold text-slate-200 pt-2">Frequently asked questions</h3><div><p class="font-medium text-slate-300">How much can I save with an EV?</p><p>It depends on your mileage, local fuel and electricity prices, and where you charge. Home charging usually saves the most.</p></div><div><p class="font-medium text-slate-300">Are public chargers more expensive?</p><p>Often, yes. DC fast charging can cost several times more per kWh than home charging, which can reduce or remove the savings.</p></div><p class="text-xs text-slate-500 pt-2">Results are estimates for planning only and not financial, tax or legal advice. Read our <a class="text-[#00BFFF] underline" href="editorial-policy.html">editorial policy</a>.</p></section></main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-border bg-dark-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      <div class="grid sm:grid-cols-3 gap-10 mb-10">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+              <path d="M4 20 Q14 4 24 20" stroke="#00BFFF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <circle cx="14" cy="20" r="3" fill="#00BFFF"/>
+            </svg>
+            <span class="font-bold">Watt<span class="neon-text">lab</span></span>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed">Independent EV research and tools for American drivers making the switch.</p>
+        </div>
+        <div>
+          <div class="text-xs font-mono text-neon tracking-widest uppercase mb-4">Navigate</div>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="index.html#models" class="nav-link">EV Models</a></li>
+            <li><a href="index.html#ev-news" class="nav-link">EV News</a></li>
+            <li><a href="calculator.html" class="nav-link neon-text font-semibold">⚡ Savings Calculator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-xs font-mono text-neon tracking-widest uppercase mb-4">Data Sources</div>
+          <p class="text-slate-500 text-sm leading-relaxed">Electricity rates: US EIA (2024–2025). CO₂ factors: US EPA. EV efficiency: EPA MPGe ratings.</p>
+        </div>
+      </div>
+      <div class="grad-line mb-6"></div>
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-600">
+        <span>© 2026 Wattlab. All rights reserved.</span>
+        <span>Estimates only · Rates updated 2026</span>
+      </div>
+    </div>
+  <p class="text-xs text-slate-500 mt-3 footer-legal"><a href="privacy-policy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="editorial-policy.html">Editorial Policy</a> · <a href="contact.html">Contact</a></p>
+</footer>
+
+  <script>
+    // ─── LOCATION DATA ───────────────────────────────────────────────────────────
+    // rate = electricity cents/kWh, currency = display symbol, gasUnit = label for fuel
+    // European rates in EUR cents/kWh (Eurostat 2024); US in USD cents/kWh (EIA 2024-25)
+    const STATE_RATES = {
+      // ── United States ──
+      "🇺🇸 Alabama":        { rate: 13.1, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Alaska":         { rate: 22.8, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Arizona":        { rate: 13.2, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Arkansas":       { rate: 11.8, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 California":     { rate: 28.5, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Colorado":       { rate: 14.0, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Connecticut":    { rate: 27.4, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Delaware":       { rate: 14.8, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Florida":        { rate: 13.6, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Georgia":        { rate: 13.0, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Hawaii":         { rate: 43.7, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Idaho":          { rate: 10.5, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Illinois":       { rate: 14.8, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Indiana":        { rate: 13.7, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Iowa":           { rate: 11.5, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Kansas":         { rate: 12.8, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Kentucky":       { rate: 11.4, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Louisiana":      { rate: 10.8, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Maine":          { rate: 24.9, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Maryland":       { rate: 16.2, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Massachusetts":  { rate: 28.1, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Michigan":       { rate: 17.7, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Minnesota":      { rate: 14.6, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Mississippi":    { rate: 12.5, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Missouri":       { rate: 12.4, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Montana":        { rate: 11.2, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Nebraska":       { rate: 11.3, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Nevada":         { rate: 13.5, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 New Hampshire":  { rate: 26.3, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 New Jersey":     { rate: 17.8, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 New Mexico":     { rate: 13.7, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 New York":       { rate: 22.1, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 North Carolina": { rate: 12.5, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 North Dakota":   { rate: 11.2, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Ohio":           { rate: 13.5, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Oklahoma":       { rate: 11.2, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Oregon":         { rate: 12.6, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Pennsylvania":   { rate: 16.1, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Rhode Island":   { rate: 27.0, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 South Carolina": { rate: 12.7, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 South Dakota":   { rate: 12.1, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Tennessee":      { rate: 11.7, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Texas":          { rate: 13.1, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Utah":           { rate: 11.0, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Vermont":        { rate: 22.0, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Virginia":       { rate: 13.7, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Washington":     { rate: 10.8, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 West Virginia":  { rate: 12.0, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Wisconsin":      { rate: 17.0, currency: "$", gasUnit: "gallon" },
+      "🇺🇸 Wyoming":        { rate: 10.8, currency: "$", gasUnit: "gallon" },
+      // ── Europe (Eurostat H1 2024, household avg incl. taxes) ──
+      "🇦🇱 Albania":        { rate: 9.8,  currency: "€", gasUnit: "liter" },
+      "🇦🇩 Andorra":        { rate: 10.5, currency: "€", gasUnit: "liter" },
+      "🇦🇹 Austria":        { rate: 22.8, currency: "€", gasUnit: "liter" },
+      "🇧🇾 Belarus":        { rate: 7.2,  currency: "€", gasUnit: "liter" },
+      "🇧🇪 Belgium":        { rate: 28.5, currency: "€", gasUnit: "liter" },
+      "🇧🇦 Bosnia & Herz.": { rate: 11.3, currency: "€", gasUnit: "liter" },
+      "🇧🇬 Bulgaria":       { rate: 11.4, currency: "€", gasUnit: "liter" },
+      "🇭🇷 Croatia":        { rate: 16.8, currency: "€", gasUnit: "liter" },
+      "🇨🇾 Cyprus":         { rate: 22.1, currency: "€", gasUnit: "liter" },
+      "🇨🇿 Czech Republic": { rate: 19.6, currency: "€", gasUnit: "liter" },
+      "🇩🇰 Denmark":        { rate: 36.2, currency: "€", gasUnit: "liter" },
+      "🇪🇪 Estonia":        { rate: 17.3, currency: "€", gasUnit: "liter" },
+      "🇫🇴 Faroe Islands":  { rate: 21.0, currency: "€", gasUnit: "liter" },
+      "🇫🇮 Finland":        { rate: 19.5, currency: "€", gasUnit: "liter" },
+      "🇫🇷 France":         { rate: 23.2, currency: "€", gasUnit: "liter" },
+      "🇩🇪 Germany":        { rate: 31.8, currency: "€", gasUnit: "liter" },
+      "🇬🇷 Greece":         { rate: 21.4, currency: "€", gasUnit: "liter" },
+      "🇭🇺 Hungary":        { rate: 14.5, currency: "€", gasUnit: "liter" },
+      "🇮🇸 Iceland":        { rate: 14.2, currency: "€", gasUnit: "liter" },
+      "🇮🇪 Ireland":        { rate: 31.4, currency: "€", gasUnit: "liter" },
+      "🇮🇹 Italy":          { rate: 27.3, currency: "€", gasUnit: "liter" },
+      "🇽🇰 Kosovo":         { rate: 7.8,  currency: "€", gasUnit: "liter" },
+      "🇱🇻 Latvia":         { rate: 20.4, currency: "€", gasUnit: "liter" },
+      "🇱🇮 Liechtenstein":  { rate: 19.8, currency: "€", gasUnit: "liter" },
+      "🇱🇹 Lithuania":      { rate: 16.5, currency: "€", gasUnit: "liter" },
+      "🇱🇺 Luxembourg":     { rate: 17.6, currency: "€", gasUnit: "liter" },
+      "🇲🇹 Malta":          { rate: 12.8, currency: "€", gasUnit: "liter" },
+      "🇲🇩 Moldova":        { rate: 10.2, currency: "€", gasUnit: "liter" },
+      "🇲🇨 Monaco":         { rate: 23.0, currency: "€", gasUnit: "liter" },
+      "🇲🇪 Montenegro":     { rate: 10.9, currency: "€", gasUnit: "liter" },
+      "🇳🇱 Netherlands":    { rate: 29.4, currency: "€", gasUnit: "liter" },
+      "🇲🇰 North Macedonia":{ rate: 9.6,  currency: "€", gasUnit: "liter" },
+      "🇳🇴 Norway":         { rate: 14.8, currency: "€", gasUnit: "liter" },
+      "🇵🇱 Poland":         { rate: 17.2, currency: "€", gasUnit: "liter" },
+      "🇵🇹 Portugal":       { rate: 22.9, currency: "€", gasUnit: "liter" },
+      "🇷🇴 Romania":        { rate: 13.1, currency: "€", gasUnit: "liter" },
+      "🇷🇺 Russia":         { rate: 5.8,  currency: "€", gasUnit: "liter" },
+      "🇸🇲 San Marino":     { rate: 23.0, currency: "€", gasUnit: "liter" },
+      "🇷🇸 Serbia":         { rate: 9.7,  currency: "€", gasUnit: "liter" },
+      "🇸🇰 Slovakia":       { rate: 18.3, currency: "€", gasUnit: "liter" },
+      "🇸🇮 Slovenia":       { rate: 19.7, currency: "€", gasUnit: "liter" },
+      "🇪🇸 Spain":          { rate: 21.6, currency: "€", gasUnit: "liter" },
+      "🇸🇪 Sweden":         { rate: 16.1, currency: "€", gasUnit: "liter" },
+      "🇨🇭 Switzerland":    { rate: 23.4, currency: "€", gasUnit: "liter" },
+      "🇹🇷 Turkey":         { rate: 14.3, currency: "€", gasUnit: "liter" },
+      "🇺🇦 Ukraine":        { rate: 6.4,  currency: "€", gasUnit: "liter" },
+      "🇬🇧 United Kingdom": { rate: 24.5, currency: "£", gasUnit: "liter" },
+      "🇻🇦 Vatican City":   { rate: 23.0, currency: "€", gasUnit: "liter" }
+    };
+
+    // EV efficiencies (mi/kWh)
+    const EV_MODELS = {
+      model3: 4.0,
+      modely: 3.5,
+      ioniq5: 3.2,
+      mache: 3.3,
+    };
+
+    // CO2: lbs per gallon of gasoline (EPA)
+    const CO2_PER_GALLON = 19.6;
+    // Grid CO2: lbs per kWh (US avg grid, EPA)
+    const GRID_CO2_PER_KWH = 0.92;
+
+    // ─── POPULATE LOCATION DROPDOWN ──────────────────────────────────────────────
+    const stateSelect = document.getElementById('state-select');
+
+    const usGroup = document.createElement('optgroup');
+    usGroup.label = '🇺🇸 United States';
+    const euGroup = document.createElement('optgroup');
+    euGroup.label = '🌍 Europe';
+
+    Object.keys(STATE_RATES).sort().forEach(location => {
+      const d = STATE_RATES[location];
+      const opt = document.createElement('option');
+      opt.value = location;
+      opt.textContent = `${location} — ${d.rate}¢/kWh`;
+      if (location.startsWith('🇺🇸')) usGroup.appendChild(opt);
+      else euGroup.appendChild(opt);
+    });
+    stateSelect.appendChild(usGroup);
+    stateSelect.appendChild(euGroup);
+
+    // ─── EV MODEL SELECTION ──────────────────────────────────────────────────────
+    const evModelSelect = document.getElementById('ev-model');
+    const customEffWrap = document.getElementById('custom-eff-wrap');
+    const effValueEl = document.getElementById('eff-value');
+    const customEffInput = document.getElementById('custom-eff');
+
+    function getEfficiency() {
+      const model = evModelSelect.value;
+      if (model === 'custom') return parseFloat(customEffInput.value) || 3.5;
+      return EV_MODELS[model] || 4.0;
+    }
+
+    evModelSelect.addEventListener('change', () => {
+      if (evModelSelect.value === 'custom') {
+        customEffWrap.classList.remove('hidden');
+        effValueEl.textContent = (parseFloat(customEffInput.value) || 3.5).toFixed(1) + ' mi/kWh';
+      } else {
+        customEffWrap.classList.add('hidden');
+        effValueEl.textContent = (EV_MODELS[evModelSelect.value] || 4.0).toFixed(1) + ' mi/kWh';
+      }
+      calculate();
+    });
+
+    customEffInput.addEventListener('input', () => {
+      effValueEl.textContent = (parseFloat(customEffInput.value) || 3.5).toFixed(1) + ' mi/kWh';
+      calculate();
+    });
+
+    // ─── STATE SELECTION ─────────────────────────────────────────────────────────
+    stateSelect.addEventListener('change', () => {
+      const state = stateSelect.value;
+      if (state && STATE_RATES[state]) {
+        const d = STATE_RATES[state];
+        document.getElementById('rate-display').textContent = d.rate + '¢/kWh';
+        document.getElementById('gas-currency-symbol').textContent = d.currency;
+        const unit = d.gasUnit === 'liter' ? 'Liter' : 'Gallon';
+        document.getElementById('gas-price-label').textContent = `Fuel Price per ${unit}`;
+        // Suggest typical default price
+        const gasInput = document.getElementById('gas-price');
+        if (d.gasUnit === 'liter') {
+          gasInput.value = gasInput.value > 5 ? gasInput.value : '1.75';
+          gasInput.max = 5; gasInput.step = '0.01';
+        } else {
+          gasInput.value = gasInput.value > 5 ? '3.50' : gasInput.value;
+          gasInput.max = 20; gasInput.step = '0.01';
+        }
+      } else {
+        document.getElementById('rate-display').textContent = '— ¢/kWh';
+        document.getElementById('gas-currency-symbol').textContent = '$';
+        document.getElementById('gas-price-label').textContent = 'Fuel Price per Gallon';
+      }
+      calculate();
+    });
+
+    // ─── LIVE INPUT LISTENERS ────────────────────────────────────────────────────
+    ['daily-miles', 'gas-price', 'car-mpg'].forEach(id => {
+      document.getElementById(id).addEventListener('input', calculate);
+    });
+
+    // ─── CALCULATE ───────────────────────────────────────────────────────────────
+    function calculate() {
+      const state = stateSelect.value;
+      const dailyMiles = parseFloat(document.getElementById('daily-miles').value);
+      const gasPrice = parseFloat(document.getElementById('gas-price').value);
+      const mpg = parseFloat(document.getElementById('car-mpg').value);
+      const eff = getEfficiency();
+
+      // Need at least state and valid numbers
+      if (!state || !dailyMiles || !gasPrice || !mpg || dailyMiles <= 0 || mpg <= 0) {
+        if (!state) return; // Don't show error if nothing touched yet
+        return;
+      }
+
+      const locData = STATE_RATES[state];
+      const ratePerKwh = locData.rate / 100;
+      const currency = locData.currency || '$';
+      const isLiter = locData.gasUnit === 'liter';
+      // Convert MPG to km/L if liter-based (1 MPG = 0.4251 km/L; miles to km = ×1.60934)
+      // We keep daily miles as-is; for liters: gallons = miles / mpg; liters = gallons * 3.78541
+      const monthlyMiles = dailyMiles * 30.5;
+
+      // Costs — gas
+      const monthlyGallons = monthlyMiles / mpg;
+      const monthlyLiters = monthlyGallons * 3.78541;
+      const monthlyGasCost = isLiter ? monthlyLiters * gasPrice : monthlyGallons * gasPrice;
+      const monthlyEvCost = (monthlyMiles / eff) * ratePerKwh;
+      const monthlySavings = monthlyGasCost - monthlyEvCost;
+      const yearlySavings = monthlySavings * 12;
+      const fiveYearSavings = yearlySavings * 5;
+
+      // CO2
+      const yearlyMiles = dailyMiles * 365;
+      const gasGallonsPerYear = yearlyMiles / mpg;
+      const gasCO2 = gasGallonsPerYear * CO2_PER_GALLON;
+      const evKwhPerYear = yearlyMiles / eff;
+      const evCO2 = evKwhPerYear * GRID_CO2_PER_KWH;
+      const co2Saved = Math.max(0, gasCO2 - evCO2);
+      const treesEquiv = Math.round(co2Saved / 48); // ~48 lbs CO2 per tree per year
+
+      // Bar widths
+      const maxCost = Math.max(monthlyGasCost, monthlyEvCost, 0.01);
+      const gasBarW = Math.round((monthlyGasCost / maxCost) * 100);
+      const evBarW = Math.round((monthlyEvCost / maxCost) * 100);
+
+      // ── Update DOM ──
+      showResults();
+
+      set('monthly-savings', fmt(monthlySavings, currency));
+      set('yearly-savings', fmt(yearlySavings, currency));
+      set('monthly-gas', fmt(monthlyGasCost, currency));
+      set('monthly-ev', fmt(monthlyEvCost, currency));
+      set('co2-saved', Math.round(co2Saved).toLocaleString());
+      set('trees-equiv', treesEquiv.toLocaleString());
+      set('five-year-savings', fmt(fiveYearSavings, currency));
+      set('monthly-miles-display', Math.round(monthlyMiles).toLocaleString());
+      set('rate-used-display', locData.rate + '¢/kWh');
+
+      // Colour monthly savings
+      const savingsEl = document.getElementById('monthly-savings');
+      const yearlyEl = document.getElementById('yearly-savings');
+      if (monthlySavings >= 0) {
+        savingsEl.style.color = '#00BFFF';
+        yearlyEl.style.color = '#00BFFF';
+      } else {
+        savingsEl.style.color = '#f97316';
+        yearlyEl.style.color = '#f97316';
+      }
+
+      document.getElementById('gas-bar').style.width = gasBarW + '%';
+      document.getElementById('ev-bar').style.width = evBarW + '%';
+
+      // Summary
+      set('summary-state', state.replace(/^.{1,4}\s/, '')); // strip flag emoji
+      set('summary-rate', locData.rate + '¢/kWh');
+      set('summary-miles', dailyMiles + ' mi');
+      set('summary-gas', currency + gasPrice.toFixed(2) + '/' + (isLiter ? 'L' : 'gal'));
+      set('summary-mpg', mpg + ' MPG');
+      set('summary-eff', eff.toFixed(1) + ' mi/kWh');
+    }
+
+    function fmt(n, currency) {
+      const sym = currency || '$';
+      const abs = Math.abs(n);
+      return (n < 0 ? '-' : '') + sym + abs.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    function set(id, val) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    }
+
+    function showResults() {
+      document.getElementById('empty-state').classList.add('hidden');
+      const content = document.getElementById('results-content');
+      content.classList.remove('hidden');
+      content.classList.add('fade-in');
+    }
+
+    // ─── CALCULATE BUTTON ────────────────────────────────────────────────────────
+    document.getElementById('calc-btn').addEventListener('click', () => {
+      calculate();
+      // Scroll results into view on mobile
+      if (window.innerWidth < 1024) {
+        document.getElementById('results-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    // ─── RESET ───────────────────────────────────────────────────────────────────
+    document.getElementById('reset-btn').addEventListener('click', () => {
+      stateSelect.value = '';
+      document.getElementById('daily-miles').value = '35';
+      document.getElementById('gas-price').value = '3.50';
+      document.getElementById('car-mpg').value = '28';
+      evModelSelect.value = 'model3';
+      effValueEl.textContent = '4.0 mi/kWh';
+      customEffWrap.classList.add('hidden');
+      document.getElementById('rate-display').textContent = '— ¢/kWh';
+      document.getElementById('results-content').classList.add('hidden');
+      document.getElementById('empty-state').classList.remove('hidden');
+    });
+
+    // ─── SHARE / COPY ────────────────────────────────────────────────────────────
+    document.getElementById('share-btn').addEventListener('click', () => {
+      const state = stateSelect.value.replace(/^.{1,4}\s/, '') || document.getElementById('summary-state').textContent;
+      const monthly = document.getElementById('monthly-savings').textContent;
+      const yearly = document.getElementById('yearly-savings').textContent;
+      const co2 = document.getElementById('co2-saved').textContent;
+      const text = `My EV Savings (via Wattlab)\nState: ${state}\nMonthly savings: ${monthly}\nYearly savings: ${yearly}\nCO₂ saved/year: ${co2} lbs\nCalculate yours: ${window.location.href}`;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('share-toast');
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 2500);
+      });
+    });
+
+    // ─── MOBILE MENU ─────────────────────────────────────────────────────────────
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Run calculation on load if defaults are all valid (no state selected, so results stay hidden)
+  </script>
+</body>
+</html>

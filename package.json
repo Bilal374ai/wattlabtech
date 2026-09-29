@@ -1,0 +1,11 @@
+{
+  "name": "wattlab",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Wattlab static site + Netlify Functions",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind/site.config.js -i tailwind/input.css -o css/tw-site.css --minify && tailwindcss -c tailwind/tools.config.js -i tailwind/input.css -o css/tw-tools.css --minify"
+  },
+  "devDependencies": { "tailwindcss": "3.4.17" },
+  "engines": { "node": ">=18" }
+}

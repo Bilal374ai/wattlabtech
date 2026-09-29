@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<script src="js/consent.js?v=3"></script>
+<meta name="google-site-verification" content="google6a08c7dbfdb2fb30">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EV Break-Even Calculator — When Does EV Pay Off? | Wattlab</title>
+  <meta name="description" content="Calculate the exact year your electric vehicle pays for itself vs a gas car. Free EV break-even calculator with real numbers."/>
+  
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body{background:#080C10;color:#e2e8f0;}
+    .neon-text{color:#00BFFF;}
+    .grad-line{background:linear-gradient(90deg,transparent,#00BFFF,transparent);height:1px;}
+    .hero-bg{background:radial-gradient(ellipse 70% 50% at 50% -5%,rgba(0,191,255,0.10) 0%,transparent 65%);}
+    .calc-input,.calc-select{background:#111827;border:1px solid #1C2433;border-radius:.625rem;color:#e2e8f0;width:100%;padding:.65rem .9rem;font-size:.95rem;transition:border-color .15s,box-shadow .15s;outline:none;appearance:none;-webkit-appearance:none;}
+    .calc-input:focus,.calc-select:focus{border-color:#00BFFF;box-shadow:0 0 0 3px rgba(0,191,255,0.12);}
+    .calc-input[type=number]::-webkit-inner-spin-button,.calc-input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+    .calc-input[type=number]{-moz-appearance:textfield;}
+    .calc-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300BFFF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.5rem;}
+    .calc-select option{background:#0D1117;color:#e2e8f0;}
+    .result-card{background:#0D1117;border:1px solid #1C2433;border-radius:1rem;}
+    .result-card.active{border-color:rgba(0,191,255,0.5);}
+    .result-card.highlight{border-color:#00BFFF;box-shadow:0 0 24px rgba(0,191,255,0.2);}
+    .nav-link{transition:color .15s;color:#94a3b8;}
+    .nav-link:hover{color:#00BFFF;}
+    label{display:block;font-size:.8rem;font-weight:500;color:#94a3b8;margin-bottom:.4rem;}
+    .cta-pulse{animation:ctaPulse 3s ease-in-out infinite;}
+    @keyframes ctaPulse{0%,100%{box-shadow:0 0 16px rgba(0,191,255,0.35);}50%{box-shadow:0 0 36px rgba(0,191,255,0.6);}}
+    .fade-in{animation:fadeIn .4s ease both;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+    /* Timeline bar */
+    .timeline-bar{background:#1C2433;border-radius:99px;height:10px;overflow:hidden;position:relative;}
+    .timeline-fill{height:100%;border-radius:99px;transition:width .7s cubic-bezier(.4,0,.2,1);}
+    .timeline-marker{position:absolute;top:-4px;width:18px;height:18px;border-radius:50%;border:2px solid #00BFFF;background:#080C10;transform:translateX(-50%);transition:left .7s cubic-bezier(.4,0,.2,1);}
+  </style>
+<meta name="google-adsense-account" content="ca-pub-1460692736386027">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQQS92H7YB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VQQS92H7YB');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1460692736386027" crossorigin="anonymous"></script>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#00E5FF">
+<link rel="canonical" href="https://wattlabtech.netlify.app/break-even.html">
+<link rel="alternate" hreflang="x-default" href="https://wattlabtech.netlify.app/break-even.html">
+<link rel="alternate" hreflang="en" href="https://wattlabtech.netlify.app/break-even.html">
+<link rel="stylesheet" href="css/tw-tools.css?v=3">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wattlab">
+<meta property="og:title" content="EV Break-Even Calculator — When Does EV Pay Off? | Wattlab">
+<meta property="og:description" content="Calculate the exact year your electric vehicle pays for itself vs a gas car. Free EV break-even calculator with real numbers.">
+<meta property="og:url" content="https://wattlabtech.netlify.app/break-even.html">
+<meta property="og:image" content="https://wattlabtech.netlify.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EV Break-Even Calculator — When Does EV Pay Off? | Wattlab">
+<meta name="twitter:description" content="Calculate the exact year your electric vehicle pays for itself vs a gas car. Free EV break-even calculator with real numbers.">
+<meta name="twitter:image" content="https://wattlabtech.netlify.app/assets/og-image.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://wattlabtech.netlify.app/"}, {"@type": "ListItem", "position": 2, "name": "EV Break-Even Calculator — When Does EV Pay Off?", "item": "https://wattlabtech.netlify.app/break-even.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "EV Break-Even Calculator — When Does EV Pay Off?", "url": "https://wattlabtech.netlify.app/break-even.html", "description": "Calculate the exact year your electric vehicle pays for itself vs a gas car. Free EV break-even calculator with real numbers.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Wattlab"}}</script>
+</head>
+<body class="font-sans antialiased">
+
+<!-- NAV -->
+<header class="sticky top-0 z-50 border-b border-[#1C2433] bg-[#080C10]/90 backdrop-blur-md">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="font-bold text-lg tracking-tight">Watt<span class="neon-text">lab</span></a>
+    <div class="flex items-center gap-4 text-sm">
+      <a href="tools-hub.html" class="nav-link hidden sm:inline">← All Tools</a>
+      <a href="calculator.html" class="nav-link hidden sm:inline">Savings Calc</a>
+      <a href="tools-hub.html" class="sm:hidden nav-link">← Tools</a>
+    </div>
+  </nav>
+</header>
+
+<main class="hero-bg">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-24">
+
+    <!-- Header -->
+    <div class="mb-10">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-6 h-px bg-[#00BFFF]"></span>
+        <span class="text-xs font-mono text-[#00BFFF] tracking-widest uppercase">Tool 1 of 4</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3">⚖️ Break-Even Calculator</h1>
+      <p class="text-slate-400 max-w-xl">Find the exact year your EV investment pays off vs keeping your gas car — with real cost data.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-6">
+
+      <!-- INPUTS -->
+      <div class="lg:col-span-2 bg-[#0D1117] border border-[#1C2433] rounded-2xl p-6 flex flex-col gap-5">
+
+        <div class="text-xs font-mono text-[#00BFFF] uppercase tracking-widest mb-1">Your Gas Car</div>
+
+        <div>
+          <label>Current Car Value ($)</label>
+          <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">$</span>
+          <input id="gas-car-value" type="number" class="calc-input pl-6" placeholder="15000" value="15000"/></div>
+        </div>
+
+        <div>
+          <label>Gas Price per Gallon ($)</label>
+          <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">$</span>
+          <input id="gas-price" type="number" class="calc-input pl-6" placeholder="3.50" step="0.01" value="3.50"/></div>
+        </div>
+
+        <div>
+          <label>Car Fuel Economy (MPG)</label>
+          <input id="gas-mpg" type="number" class="calc-input" placeholder="28" value="28"/>
+        </div>
+
+        <div>
+          <label>Annual Maintenance (gas car) $</label>
+          <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">$</span>
+          <input id="gas-maint" type="number" class="calc-input pl-6" placeholder="1200" value="1200"/></div>
+        </div>
+
+        <div class="grad-line opacity-40"></div>
+        <div class="text-xs font-mono text-[#00BFFF] uppercase tracking-widest">Your EV</div>
+
+        <div>
+          <label>EV Purchase Price ($)</label>
+          <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">$</span>
+          <input id="ev-price" type="number" class="calc-input pl-6" placeholder="42000" value="42000"/></div>
+        </div>
+
+        <div>
+          <label>Incentives &amp; Rebates ($)</label>
+          <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">$</span>
+          <input id="tax-credit" type="number" class="calc-input pl-6" placeholder="0" value="0"/></div>
+          <p class="text-xs text-slate-600 mt-1">Federal EV credits ended Sept 30, 2025 · enter only rebates you verified · <a href="tax-credit.html" class="text-[#00BFFF]">Incentives Checker</a></p>
+        </div>
+
+        <div>
+          <label>EV Electricity Rate (¢/kWh)</label>
+          <input id="ev-rate" type="number" class="calc-input" placeholder="14" step="0.1" value="14"/>
+        </div>
+
+        <div>
+          <label>EV Efficiency (mi/kWh)</label>
+          <input id="ev-eff" type="number" class="calc-input" placeholder="3.5" step="0.1" value="3.5"/>
+        </div>
+
+        <div>
+          <label>Annual EV Maintenance ($)</label>
+          <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">$</span>
+          <input id="ev-maint" type="number" class="calc-input pl-6" placeholder="500" value="500"/></div>
+        </div>
+
+        <div class="grad-line opacity-40"></div>
+
+        <div>
+          <label>Daily Miles Driven</label>
+          <input id="daily-miles" type="number" class="calc-input" placeholder="35" value="35"/>
+        </div>
+
+        <button onclick="calcBreakEven()" class="w-full bg-[#00BFFF] text-[#080C10] font-bold py-3.5 rounded-xl cta-pulse text-sm">
+          ⚖️ Calculate Break-Even Point
+        </button>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="lg:col-span-3 flex flex-col gap-5">
+
+        <!-- Empty state -->
+        <div id="be-empty" class="flex flex-col items-center justify-center min-h-[300px] bg-[#0D1117] border border-[#1C2433] rounded-2xl p-8 text-center">
+          <div class="text-5xl mb-4">⚖️</div>
+          <p class="text-slate-400">Fill in your numbers to see when your EV pays for itself.</p>
+        </div>
+
+        <div id="be-results" class="hidden fade-in flex flex-col gap-5">
+
+          <!-- Big answer -->
+          <div class="result-card highlight p-7 text-center">
+            <div class="text-slate-400 text-sm mb-2">Your EV breaks even in</div>
+            <div id="be-years" class="text-6xl font-extrabold neon-text mb-1">—</div>
+            <div class="text-slate-400 text-sm">years from purchase</div>
+            <div id="be-subtitle" class="mt-3 text-sm text-slate-300"></div>
+          </div>
+
+          <!-- Cost comparison cards -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="result-card active p-5">
+              <div class="text-xs text-slate-500 mb-1">EV Net Cost</div>
+              <div id="be-ev-net" class="text-2xl font-bold text-[#00BFFF]">$—</div>
+              <div class="text-xs text-slate-500 mt-1">after incentives</div>
+            </div>
+            <div class="result-card active p-5">
+              <div class="text-xs text-slate-500 mb-1">Price Difference</div>
+              <div id="be-diff" class="text-2xl font-bold text-orange-400">$—</div>
+              <div class="text-xs text-slate-500 mt-1">more than gas car</div>
+            </div>
+            <div class="result-card active p-5">
+              <div class="text-xs text-slate-500 mb-1">Annual Savings</div>
+              <div id="be-annual" class="text-2xl font-bold text-green-400">$—</div>
+              <div class="text-xs text-slate-500 mt-1">fuel + maintenance</div>
+            </div>
+            <div class="result-card active p-5">
+              <div class="text-xs text-slate-500 mb-1">10-Year Total Savings</div>
+              <div id="be-10yr" class="text-2xl font-bold text-[#00BFFF]">$—</div>
+              <div class="text-xs text-slate-500 mt-1">net of price diff</div>
+            </div>
+          </div>
+
+          <!-- Year-by-year timeline -->
+          <div class="result-card active p-6">
+            <div class="text-sm font-semibold mb-5">Cumulative Savings Timeline</div>
+            <div id="timeline-rows" class="flex flex-col gap-3"></div>
+          </div>
+
+          <div class="text-xs text-slate-600 text-center">Estimates only. Does not include insurance, depreciation, or financing costs.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Next tool CTA -->
+    <div class="mt-10 grad-line"></div>
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0D1117] border border-[#1C2433] rounded-2xl p-6">
+      <div>
+        <div class="text-xs font-mono text-[#00BFFF] mb-1">NEXT TOOL</div>
+        <div class="font-semibold">EV Incentives Checker</div>
+        <div class="text-sm text-slate-400">See which state and utility incentives may still apply</div>
+      </div>
+      <a href="tax-credit.html" class="shrink-0 bg-[#00BFFF] text-[#080C10] font-bold px-6 py-3 rounded-xl text-sm">Check Incentives →</a>
+    </div>
+  </div>
+<section class="max-w-4xl mx-auto px-4 sm:px-6 pb-20 text-sm text-slate-400 leading-relaxed space-y-3" aria-label="About this calculator"><h2 class="text-lg font-bold text-white">How the break-even calculator works</h2><h3 class="font-semibold text-slate-200 pt-2">The formula</h3><p>The break-even point is when the EV's lower running costs have repaid its higher purchase price: break-even = (EV price − gas car price − incentives) ÷ (yearly gas car running cost − yearly EV running cost). Running costs come from the mileage, fuel, electricity and maintenance figures you enter.</p><h3 class="font-semibold text-slate-200 pt-2">Assumptions and limits</h3><p>The model keeps prices and efficiency constant over time and does not include depreciation, insurance or financing unless you build them into your inputs. Use your own electricity rate (check your utility bill) and the local gasoline price. For a full comparison use the <a class="text-[#00BFFF] underline" href="tco.html">5-year cost calculator</a>.</p><h3 class="font-semibold text-slate-200 pt-2">Tips for better results</h3><p>If you will use public fast chargers often, enter a higher electricity price. Federal EV credits ended for vehicles acquired after September 30, 2025, so enter only state or utility rebates you have verified. See <a class="text-[#00BFFF] underline" href="ev-cost-of-ownership-2026.html">the true cost of owning an EV</a>.</p><h3 class="font-semibold text-slate-200 pt-2">Frequently asked questions</h3><div><p class="font-medium text-slate-300">What is a good break-even time?</p><p>It should be shorter than the time you plan to keep the car. The answer depends heavily on mileage, energy prices and where you charge.</p></div><div><p class="font-medium text-slate-300">Why is my result "never"?</p><p>If the EV's yearly running cost is not lower than the gas car's, the price gap is never repaid by fuel savings alone.</p></div><p class="text-xs text-slate-500 pt-2">Results are estimates for planning only and not financial, tax or legal advice. Read our <a class="text-[#00BFFF] underline" href="editorial-policy.html">editorial policy</a>.</p></section></main>
+
+<footer class="border-t border-[#1C2433] bg-[#0D1117] py-8 text-center text-xs text-slate-600">
+  © 2026 Wattlab · <a href="tools-hub.html" class="hover:text-[#00BFFF]">All EV Tools</a> · <a href="index.html" class="hover:text-[#00BFFF]">Home</a>
+<p class="text-xs text-slate-500 mt-3 footer-legal"><a href="privacy-policy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="editorial-policy.html">Editorial Policy</a> · <a href="contact.html">Contact</a></p>
+</footer>
+
+<script>
+function calcBreakEven(){
+  const gasCarVal = parseFloat(document.getElementById('gas-car-value').value)||15000;
+  const gasPrice  = parseFloat(document.getElementById('gas-price').value)||3.50;
+  const mpg       = parseFloat(document.getElementById('gas-mpg').value)||28;
+  const gasMaint  = parseFloat(document.getElementById('gas-maint').value)||1200;
+  const evPrice   = parseFloat(document.getElementById('ev-price').value)||42000;
+  const taxCredit = parseFloat(document.getElementById('tax-credit').value)||0;
+  const rateC     = parseFloat(document.getElementById('ev-rate').value)||14;
+  const eff       = parseFloat(document.getElementById('ev-eff').value)||3.5;
+  const evMaint   = parseFloat(document.getElementById('ev-maint').value)||500;
+  const dailyMi   = parseFloat(document.getElementById('daily-miles').value)||35;
+
+  const evNetCost   = evPrice - taxCredit - gasCarVal; // how much more you pay upfront
+  const yearlyMiles = dailyMi * 365;
+  const annualGasCost  = (yearlyMiles / mpg) * gasPrice;
+  const annualEvCost   = (yearlyMiles / eff) * (rateC / 100);
+  const annualFuelSave = annualGasCost - annualEvCost;
+  const annualMaintSave= gasMaint - evMaint;
+  const annualTotalSave= annualFuelSave + annualMaintSave;
+  const breakEvenYears = evNetCost > 0 ? evNetCost / annualTotalSave : 0;
+  const tenYrNet = (annualTotalSave * 10) - Math.max(0, evNetCost);
+
+  // Show results
+  document.getElementById('be-empty').classList.add('hidden');
+  const res = document.getElementById('be-results');
+  res.classList.remove('hidden');
+
+  const yearsEl = document.getElementById('be-years');
+  if(breakEvenYears <= 0){
+    yearsEl.textContent = 'Immediate';
+    document.getElementById('be-subtitle').textContent = 'The EV is already cheaper after incentives!';
+    yearsEl.style.color='#22c55e';
+  } else if(breakEvenYears > 15){
+    yearsEl.textContent = '15+';
+    document.getElementById('be-subtitle').textContent = 'Consider a lower-priced EV or check available state and utility incentives.';
+    yearsEl.style.color='#f97316';
+  } else {
+    yearsEl.textContent = breakEvenYears.toFixed(1);
+    document.getElementById('be-subtitle').textContent = `You'll save $${Math.round(annualTotalSave).toLocaleString()} per year after that.`;
+    yearsEl.style.color='#00BFFF';
+  }
+
+  document.getElementById('be-ev-net').textContent = '$'+Math.abs(evNetCost).toLocaleString(undefined,{maximumFractionDigits:0}) + (evNetCost<0?' saved':'');
+  document.getElementById('be-diff').textContent = '$'+Math.max(0,evNetCost).toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('be-annual').textContent = '$'+Math.round(annualTotalSave).toLocaleString();
+  document.getElementById('be-10yr').textContent = (tenYrNet>=0?'$':'-$')+Math.abs(Math.round(tenYrNet)).toLocaleString();
+
+  // Timeline rows
+  const rows = document.getElementById('timeline-rows');
+  rows.innerHTML='';
+  const maxYrs = Math.min(10, Math.ceil(Math.max(breakEvenYears,1))+3);
+  for(let y=1;y<=maxYrs;y++){
+    const cumSave = (annualTotalSave*y) - Math.max(0,evNetCost);
+    const pct = Math.min(100,Math.max(0,((annualTotalSave*y)/(evNetCost>0?evNetCost:annualTotalSave))*100));
+    const isBreak = y===Math.ceil(breakEvenYears);
+    rows.innerHTML+=`
+      <div class="flex items-center gap-3">
+        <div class="w-12 text-xs font-mono text-right ${isBreak?'text-[#00BFFF] font-bold':'text-slate-500'}">Yr ${y}</div>
+        <div class="flex-1 timeline-bar">
+          <div class="timeline-fill" style="width:${pct}%;background:${cumSave>=0?'#00BFFF':'#f97316'}"></div>
+        </div>
+        <div class="w-20 text-xs font-mono text-right ${cumSave>=0?'text-[#00BFFF]':'text-orange-400'}">${cumSave>=0?'+':''} $${Math.abs(Math.round(cumSave)).toLocaleString()}</div>
+        ${isBreak?'<div class="text-xs text-[#00BFFF] font-bold">✓</div>':'<div class="w-4"></div>'}
+      </div>`;
+  }
+}
+// Auto-calculate on any input change
+document.querySelectorAll('input').forEach(el=>el.addEventListener('input',calcBreakEven));
+</script>
+</body>
+</html>

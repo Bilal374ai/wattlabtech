@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /.netlify/functions/
+
+User-agent: Mediapartners-Google
+Allow: /
+
+Sitemap: https://wattlabtech.netlify.app/sitemap.xml

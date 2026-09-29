@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="js/consent.js?v=3"></script>
+<meta name="google-site-verification" content="google6a08c7dbfdb2fb30">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EV News | Latest Electric Vehicle Updates Worldwide – Wattlab</title>
+<meta name="description" content="Breaking Electric Vehicle news for a global audience: new launches, range tests, charging infrastructure, incentives, and EV industry updates.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://wattlabtech.netlify.app/ev-news.html">
+<link rel="alternate" hreflang="x-default" href="https://wattlabtech.netlify.app/ev-news.html">
+<link rel="alternate" hreflang="en" href="https://wattlabtech.netlify.app/ev-news.html">
+<script>if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="css/style.css?v=3">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<style>
+  .fv-section { background: #f8fafc; }
+  .dark .fv-section { background: #0d0f16; }
+  .fv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+  .fv-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.07); cursor: pointer; transition: transform .2s, box-shadow .2s; text-decoration: none; display: block; border: 1px solid #e5e7eb; }
+  .fv-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,229,255,.18); border-color: #00E5FF; }
+  .dark .fv-card { background: #111318; border-color: #1e2230; }
+  .fv-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; }
+  .fv-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .fv-play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); opacity: 0; transition: opacity .2s; }
+  .fv-card:hover .fv-play-overlay { opacity: 1; }
+  .fv-play-icon { width: 48px; height: 48px; background: rgba(255,255,255,.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #ff0000; }
+  .fv-info { padding: 10px 14px 14px; }
+  .fv-title { font-weight: 600; font-size: .85rem; line-height: 1.4; color: #111; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .dark .fv-title { color: #f0f0f0; }
+  .fv-date { font-size: .72rem; color: #888; margin-top: 5px; }
+  .fv-skel { background: #fff; border-radius: 14px; overflow: hidden; }
+  .dark .fv-skel { background: #111318; }
+  .fv-skel-thumb { aspect-ratio: 16/9; background: linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%); background-size: 200% 100%; animation: fvShimmer 1.4s infinite; }
+  .dark .fv-skel-thumb { background: linear-gradient(90deg,#1e2030 25%,#252840 50%,#1e2030 75%) !important; background-size: 200% 100% !important; }
+  .fv-skel-line { height: 13px; background: #f0f0f0; border-radius: 4px; margin: 12px 14px 6px; }
+  .dark .fv-skel-line { background: #1e2030; }
+  .fv-skel-line2 { height: 10px; background: #f0f0f0; border-radius: 4px; margin: 0 14px 14px; width: 55%; }
+  .dark .fv-skel-line2 { background: #1e2030; }
+  @keyframes fvShimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+  #fv-modal { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.85); align-items: center; justify-content: center; padding: 20px; }
+  #fv-modal.open { display: flex; }
+  .fv-modal-inner { position: relative; width: 100%; max-width: 900px; background: #000; border-radius: 12px; overflow: hidden; }
+  .fv-modal-close { position: absolute; top: 10px; right: 14px; z-index: 10; background: rgba(0,0,0,.6); color: #fff; border: none; font-size: 1.5rem; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .fv-modal-embed { position: relative; padding-top: 56.25%; }
+  .fv-modal-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+</style>
+<style>
+/* ===== Google News Section ===== */
+.gnews-section { background: #fff; }
+.dark .gnews-section { background: #0a0c12; }
+.gnews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.gnews-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  text-decoration: none;
+}
+.gnews-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,229,255,.15); border-color: #00E5FF; }
+.dark .gnews-card { background: #111318; border-color: #1e2230; }
+.gnews-source {
+  font-size: .72rem; font-weight: 700; color: #00E5FF;
+  text-transform: uppercase; letter-spacing: .04em;
+}
+.gnews-title {
+  font-size: .95rem; font-weight: 700; color: #111827; line-height: 1.45;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.dark .gnews-title { color: #f0f4ff; }
+.gnews-desc {
+  font-size: .8rem; color: #6b7280; line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.gnews-date { font-size: .72rem; color: #9ca3af; margin-top: auto; }
+/* skeleton */
+.gnews-skel { background: #f3f4f6; border-radius: 14px; padding: 18px; }
+.dark .gnews-skel { background: #111318; }
+.gnews-skel-line { height: 12px; background: linear-gradient(90deg,#e5e7eb 25%,#d1d5db 50%,#e5e7eb 75%); background-size: 200% 100%; border-radius: 6px; margin-bottom: 10px; animation: gnShimmer 1.4s infinite; }
+.dark .gnews-skel-line { background: linear-gradient(90deg,#1e2230 25%,#252840 50%,#1e2230 75%); background-size: 200% 100%; }
+@keyframes gnShimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+</style>
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#00E5FF">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Wattlab">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQQS92H7YB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VQQS92H7YB');
+</script>
+<link rel="stylesheet" href="css/tw-site.css?v=3">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wattlab">
+<meta property="og:title" content="EV News | Latest Electric Vehicle Updates Worldwide – Wattlab">
+<meta property="og:description" content="Breaking Electric Vehicle news for a global audience: new launches, range tests, charging infrastructure, incentives, and EV industry updates.">
+<meta property="og:url" content="https://wattlabtech.netlify.app/ev-news.html">
+<meta property="og:image" content="https://wattlabtech.netlify.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EV News | Latest Electric Vehicle Updates Worldwide – Wattlab">
+<meta name="twitter:description" content="Breaking Electric Vehicle news for a global audience: new launches, range tests, charging infrastructure, incentives, and EV industry updates.">
+<meta name="twitter:image" content="https://wattlabtech.netlify.app/assets/og-image.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://wattlabtech.netlify.app/"}, {"@type": "ListItem", "position": 2, "name": "EV News | Latest Electric Vehicle Updates Worldwide", "item": "https://wattlabtech.netlify.app/ev-news.html"}]}</script>
+</head>
+<body class="bg-white dark:bg-deep-black text-gray-800 dark:text-gray-200 font-sans antialiased transition-colors duration-300">
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header class="sticky top-0 z-50 bg-white/90 dark:bg-deep-black/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html"><img src="assets/icon-192.png" alt="Wattlab" width="38" height="38" loading="lazy" style="height:40px;width:40px;border-radius:8px;object-fit:cover"><span class="text-2xl font-extrabold text-gray-900 dark:text-white ml-2">W<span class="text-neon-blue">att</span>lab</span></a>
+      <nav class="hidden md:flex space-x-8">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="ev-news.html" class="nav-link active">EV News</a>
+        <a href="car-reviews.html" class="nav-link">Car Reviews</a>
+        <a href="tech-articles.html" class="nav-link">Tech Articles</a>
+        <a href="videos.html" class="nav-link">Videos</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="flex items-center space-x-2">
+        <button id="theme-toggle" aria-label="Toggle dark mode" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+          <svg id="icon-moon" class="w-5 h-5 hidden dark:block text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <svg id="icon-sun" class="w-5 h-5 block dark:hidden text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </button>
+        <button id="mobile-menu-btn" aria-label="Open menu" class="md:hidden p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-deep-black">
+    <div class="px-4 py-4 flex flex-col space-y-3">
+      <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a>
+      <a href="ev-news.html" class="nav-link active">EV News</a><a href="car-reviews.html" class="nav-link">Car Reviews</a>
+      <a href="tech-articles.html" class="nav-link">Tech Articles</a><a href="videos.html" class="nav-link">Videos</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <section class="py-16 bg-gray-50 dark:bg-[#0d0f16] text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white">⚡ EV News</h1>
+      <p class="mt-4 text-gray-600 dark:text-gray-300">The latest Electric Vehicle launches, range tests, charging tech, and industry updates for drivers worldwide.</p>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
+    <!-- AdSense Ad Unit - Replace data-ad-slot with your actual slot ID -->
+    
+  </div>
+
+    <!-- REAL-TIME ARTICLES FROM GOOGLE NEWS -->
+
+  <!-- ======= FEATURED ARTICLES (Static, always available) ======= -->
+  <section class="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="section-title mb-2">Featured EV Articles</h2>
+    <p class="text-sm text-neon-blue font-semibold mb-8">🆕 Updated: September 17, 2026</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111318] overflow-hidden hover:border-neon-blue/50 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+        <div class="p-5">
+          <span class="text-xs font-bold text-neon-blue uppercase tracking-widest">⚡ EV Review</span>
+          <h3 class="mt-2 font-bold text-gray-900 dark:text-white leading-snug text-base"><a href="best-electric-cars-2026.html" class="hover:text-neon-blue transition-colors">Best Electric Cars of 2026: Our Top Picks for Every Budget</a></h3>
+          <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">From affordable commuters to luxury flagships, we break down the best EVs available right now worldwide — with real-world range, charging speed, and total ownership cost.</p>
+          <div class="mt-4 flex items-center justify-between text-xs text-gray-400">
+            <span>By Muzamil Alvi</span>
+            <a href="best-electric-cars-2026.html" class="text-neon-blue font-semibold hover:underline">Read →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111318] overflow-hidden hover:border-neon-blue/50 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+        <div class="p-5">
+          <span class="text-xs font-bold text-neon-blue uppercase tracking-widest">⚡ EV Comparison</span>
+          <h3 class="mt-2 font-bold text-gray-900 dark:text-white leading-snug text-base"><a href="tesla-vs-rivian.html" class="hover:text-neon-blue transition-colors">Tesla Model Y vs Rivian R1S: Which Electric SUV Wins in 2026?</a></h3>
+          <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">Two of America's most talked-about electric SUVs go head-to-head. We compare range, charging, cargo space, software, and real-world ownership to help you decide.</p>
+          <div class="mt-4 flex items-center justify-between text-xs text-gray-400">
+            <span>By Bilal Ahmad Alvi</span>
+            <a href="tesla-vs-rivian.html" class="text-neon-blue font-semibold hover:underline">Read →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111318] overflow-hidden hover:border-neon-blue/50 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+        <div class="p-5">
+          <span class="text-xs font-bold text-neon-blue uppercase tracking-widest">🤖 AI &amp; Tech</span>
+          <h3 class="mt-2 font-bold text-gray-900 dark:text-white leading-snug text-base"><a href="ai-self-driving-cars.html" class="hover:text-neon-blue transition-colors">AI in Self-Driving Cars: How Close Are We to Level 5 Autonomy?</a></h3>
+          <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">A deep dive into how AI actually powers modern self-driving systems — from LiDAR and computer vision to neural networks — and what the road to full autonomy really looks like.</p>
+          <div class="mt-4 flex items-center justify-between text-xs text-gray-400">
+            <span>By Faiz Alvi</span>
+            <a href="ai-self-driving-cars.html" class="text-neon-blue font-semibold hover:underline">Read →</a>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111318] overflow-hidden hover:border-neon-blue/50 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+        <div class="p-5">
+          <span class="text-xs font-bold text-neon-blue uppercase tracking-widest">⚡ Charging Guide</span>
+          <h3 class="mt-2 font-bold text-gray-900 dark:text-white leading-snug text-base"><a href="ev-charging-guide-2026.html" class="hover:text-neon-blue transition-colors">EV Charging at Home vs. Public Stations: Complete 2026 Guide</a></h3>
+          <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">Level 1, Level 2, and DC fast charging explained — real costs, the best networks, and exactly what setup you need based on how you drive.</p>
+          <div class="mt-4 flex items-center justify-between text-xs text-gray-400">
+            <span>By Muzamil Alvi</span>
+            <a href="ev-charging-guide-2026.html" class="text-neon-blue font-semibold hover:underline">Read →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── NEW: Sept 17, 2026 Articles ── -->
+
+      
+
+      
+
+      
+
+    </div>
+  </section>
+  <!-- End Featured Articles -->
+
+  <section class="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="articles-section">
+    <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">🔴 Live Articles</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Real-time news &mdash; updated every visit &bull; <span id="art-updated" class="text-neon-blue font-medium"></span></p>
+      </div>
+      <button id="art-refresh" onclick="loadArticles(true)" style="display:inline-flex;align-items:center;gap:6px;background:#00E5FF;color:#000;font-weight:700;padding:8px 18px;border-radius:20px;border:none;cursor:pointer;font-size:0.82rem;">
+        🔄 Refresh
+      </button>
+    </div>
+
+    <!-- Articles Grid -->
+    <div id="art-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="gnews-skel"><div class="gnews-skel-line" style="width:35%"></div><div class="gnews-skel-line"></div><div class="gnews-skel-line" style="width:80%"></div><div class="gnews-skel-line" style="width:55%"></div></div>
+      <div class="gnews-skel"><div class="gnews-skel-line" style="width:35%"></div><div class="gnews-skel-line"></div><div class="gnews-skel-line" style="width:80%"></div><div class="gnews-skel-line" style="width:55%"></div></div>
+      <div class="gnews-skel"><div class="gnews-skel-line" style="width:35%"></div><div class="gnews-skel-line"></div><div class="gnews-skel-line" style="width:80%"></div><div class="gnews-skel-line" style="width:55%"></div></div>
+      <div class="gnews-skel"><div class="gnews-skel-line" style="width:35%"></div><div class="gnews-skel-line"></div><div class="gnews-skel-line" style="width:80%"></div><div class="gnews-skel-line" style="width:55%"></div></div>
+      <div class="gnews-skel"><div class="gnews-skel-line" style="width:35%"></div><div class="gnews-skel-line"></div><div class="gnews-skel-line" style="width:80%"></div><div class="gnews-skel-line" style="width:55%"></div></div>
+      <div class="gnews-skel"><div class="gnews-skel-line" style="width:35%"></div><div class="gnews-skel-line"></div><div class="gnews-skel-line" style="width:80%"></div><div class="gnews-skel-line" style="width:55%"></div></div>
+    </div>
+
+    <!-- Load More -->
+    <div class="text-center mt-10">
+      <button id="art-load-more" onclick="loadMoreArticles()" class="btn-secondary" style="display:none">
+        Load More Articles →
+      </button>
+      <p id="art-no-more" style="display:none;color:#9ca3af;font-size:0.85rem;margin-top:1rem">No more articles available.</p>
+    </div>
+  </section>
+    </div>
+  </div>
+
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
+    <!-- AdSense Ad Unit - Replace data-ad-slot with your actual slot ID -->
+    
+  </div>
+</main>
+
+<section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700 dark:text-gray-300 leading-relaxed"><h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">About this page</h2><p class="mb-3">The live feed above is an automated list of recent EV headlines from other publishers, gathered through Google News. Each headline links to the original article; Wattlab does not write or edit those stories, so check the source for details. Our own reporting and guides are listed above and below.</p><p>When reading EV news, look at the date, check whether numbers are manufacturer claims or independent tests, and be careful with prices and incentives, which change quickly. For background, read our <a href="best-electric-cars-2026.html" class="text-neon-blue hover:underline">best electric cars guide</a>, the <a href="ev-cost-of-ownership-2026.html" class="text-neon-blue hover:underline">cost of ownership breakdown</a> and the <a href="ev-battery-technology-2026.html" class="text-neon-blue hover:underline">solid-state battery explainer</a>.</p></section>
+<footer class="bg-gray-900 dark:bg-black text-gray-300 pt-16 pb-8 border-t border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div><h3 class="text-2xl font-bold text-white mb-4">W<span class="text-neon-blue">att</span>lab</h3><p class="text-sm mb-4">Covering the future of Electric Vehicles, AI in Cars, and unbiased Car Reviews for a global audience.</p>
+        <div class="flex space-x-4">
+          <a href="https://www.youtube.com/@FutureAutoLab" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="social-icon social-yt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          
+          <a href="https://www.facebook.com/profile.php?id=100092311145224" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon social-fb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.tiktok.com/@futureautolab" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-icon social-tt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="#000000"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg></a>
+        </div>
+      </div>
+      <div><h4 class="text-white font-semibold mb-4">Quick Links</h4><ul class="space-y-2 text-sm"><li><a href="index.html" class="footer-link">Home</a></li><li><a href="about.html" class="footer-link">About Us</a></li><li><a href="videos.html" class="footer-link">Videos</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
+      <div><h4 class="text-white font-semibold mb-4">Categories</h4><ul class="space-y-2 text-sm"><li><a href="ev-news.html" class="footer-link">EV News</a></li><li><a href="car-reviews.html" class="footer-link">Car Reviews</a></li><li><a href="tech-articles.html" class="footer-link">Tech Articles</a></li></ul></div>
+      <div><h4 class="text-white font-semibold mb-4">Legal</h4><ul class="space-y-2 text-sm"><li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li><li><a href="terms.html" class="footer-link">Terms &amp; Conditions</a></li><li><a href="disclaimer.html" class="footer-link">Disclaimer</a></li><li><a href="editorial-policy.html" class="footer-link">Editorial Policy</a></li></ul></div>
+    </div>
+    <div class="mt-12 pt-8 border-t border-gray-800 text-sm text-center">&copy; <span id="year"></span> Wattlab. All Rights Reserved. Global Automotive Media</div>
+  </div>
+</footer>
+<script src="js/script.js?v=3"></script>
+
+<script>
+(function(){
+  const QUERY   = 'electric+vehicle+EV+news+global+2026';
+  let allItems  = [];
+  let shown     = 0;
+  const PAGE_SZ = 6;
+
+  const grid     = document.getElementById('art-grid');
+  const loadMore = document.getElementById('art-load-more');
+  const noMore   = document.getElementById('art-no-more');
+  const updEl    = document.getElementById('art-updated');
+
+  function timeAgo(dateStr){
+    if(!dateStr) return '';
+    const d = new Date(dateStr);
+    if(isNaN(d)) return '';
+    const diff = Math.floor((Date.now()-d)/1000);
+    if(diff<60) return 'just now';
+    if(diff<3600) return Math.floor(diff/60)+'m ago';
+    if(diff<86400) return Math.floor(diff/3600)+'h ago';
+    return Math.floor(diff/86400)+'d ago';
+  }
+
+  function makeCard(it){
+    return `<a href="${it.link}" target="_blank" rel="noopener noreferrer"
+      style="display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;transition:transform .2s,box-shadow .2s,border-color .2s;"
+      class="art-card dark:bg-[#111318] dark:border-[#1e2230]"
+      onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,229,255,.15)';this.style.borderColor='#00E5FF'"
+      onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor=''">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+        <span style="font-size:.7rem;font-weight:800;color:#00E5FF;text-transform:uppercase;letter-spacing:.05em">${it.source}</span>
+        <span style="font-size:.68rem;color:#9ca3af;white-space:nowrap">${timeAgo(it.pubDate)}</span>
+      </div>
+      <div style="font-size:.92rem;font-weight:700;line-height:1.45;color:#111827;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden" class="dark:text-[#f0f4ff]">${it.title}</div>
+      ${it.desc ? `<div style="font-size:.78rem;color:#6b7280;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${it.desc}</div>` : ''}
+      <div style="margin-top:auto;font-size:.78rem;color:#00E5FF;font-weight:600">Read article →</div>
+    </a>`;
+  }
+
+  window.loadMoreArticles = function(){
+    const next = allItems.slice(shown, shown + PAGE_SZ);
+    if(!next.length){ loadMore.style.display='none'; noMore.style.display='block'; return; }
+    next.forEach(it => grid.insertAdjacentHTML('beforeend', makeCard(it)));
+    shown += next.length;
+    if(shown >= allItems.length){ loadMore.style.display='none'; noMore.style.display='block'; }
+  };
+
+  function showError(){
+    const q = QUERY.replace(/\+/g,' ');
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#9ca3af">
+      <div style="font-size:2rem;margin-bottom:12px">📰</div>
+      <p>Could not load live feed. Read articles on Google News:</p>
+      <a href="https://news.google.com/search?q={encodeURIComponent(q)}" target="_blank"
+         style="color:#00E5FF;font-weight:600;margin-top:8px;display:inline-block">View on Google News →</a>
+    </div>`;
+  }
+
+  window.loadArticles = async function(refresh){
+    if(refresh){
+      shown = 0; allItems = [];
+      grid.innerHTML = Array(6).fill('<div class="gnews-skel"><div class="gnews-skel-line" style="width:35%"></div><div class="gnews-skel-line"></div><div class="gnews-skel-line" style="width:80%"></div><div class="gnews-skel-line" style="width:55%"></div></div>').join('');
+    }
+
+    // rss2json is CORS-safe and returns clean JSON — most reliable method
+    const rssUrl = `https://news.google.com/rss/search?q=electric+vehicle+EV+news+global+2026&hl=en&gl=US&ceid=US:en`;
+    const apiUrl = '/.netlify/functions/news?topic=ev';
+
+    try {
+      const res = await fetch(apiUrl, {signal: AbortSignal.timeout(10000)});
+      if(!res.ok) throw new Error('fail');
+      const data = await res.json();
+
+      if(data.status !== 'ok' || !data.items || !data.items.length) throw new Error('empty');
+
+      allItems = data.items.map(it => {
+        // Google News titles contain " - Source Name" at end
+        const rawTitle = it.title || '';
+        const srcMatch = rawTitle.match(/ - ([^-]+)$/);
+        const source = srcMatch ? srcMatch[1].trim() : (it.author || 'News');
+        const title = rawTitle.replace(/ - [^-]+$/, '').trim();
+        const desc = (it.description || '').replace(/<[^>]+>/g, '').slice(0, 130);
+        return { title, link: it.link || '#', pubDate: it.pubDate, source, desc };
+      }).filter(it => it.title && it.link !== '#');
+
+      if(!allItems.length) throw new Error('no items');
+
+      shown = 0; grid.innerHTML = '';
+      if(updEl) updEl.textContent = 'Updated just now';
+      loadMoreArticles();
+      if(allItems.length > shown){ loadMore.style.display='inline-block'; }
+
+    } catch(e) {
+      // Fallback: allorigins proxy
+      try {
+        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
+        const res2 = await fetch(proxyUrl, {signal: AbortSignal.timeout(10000)});
+        const d2 = await res2.json();
+        if(!d2.contents) throw new Error('no contents');
+
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(d2.contents, 'text/xml');
+        const items = Array.from(xml.querySelectorAll('item'));
+        if(!items.length) throw new Error('no items xml');
+
+        allItems = items.map(item => {
+          const rawTitle = item.querySelector('title')?.textContent || '';
+          const srcMatch = rawTitle.match(/ - ([^-]+)$/);
+          const source = srcMatch ? srcMatch[1].trim() : 'News';
+          const title = rawTitle.replace(/ - [^-]+$/, '').trim();
+          const linkEl = item.querySelector('link');
+          const link = linkEl?.textContent || linkEl?.nextSibling?.nodeValue || '#';
+          const pubDate = item.querySelector('pubDate')?.textContent || '';
+          const desc = (item.querySelector('description')?.textContent || '').replace(/<[^>]+>/g,'').slice(0,130);
+          return { title, link, pubDate, source, desc };
+        }).filter(it => it.title && it.link !== '#');
+
+        if(!allItems.length) throw new Error('empty');
+        shown = 0; grid.innerHTML = '';
+        if(updEl) updEl.textContent = 'Updated just now';
+        loadMoreArticles();
+        if(allItems.length > shown){ loadMore.style.display='inline-block'; }
+
+      } catch(e2) {
+        showError();
+      }
+    }
+  };
+
+  loadArticles(false);
+})();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('SW registered'))
+      .catch(err => console.log('SW error:', err));
+  });
+}
+</script>
+</body>
+</html>

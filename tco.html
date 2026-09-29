@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<script src="js/consent.js?v=3"></script>
+<meta name="google-site-verification" content="google6a08c7dbfdb2fb30">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EV Total Cost of Ownership Calculator (5-Year) | Wattlab</title>
+  <meta name="description" content="5-year total cost of ownership: EV vs gas car. Compare purchase price, fuel, insurance, maintenance, and resale value side by side."/>
+  
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body{background:#080C10;color:#e2e8f0;}
+    .neon-text{color:#00BFFF;}
+    .grad-line{background:linear-gradient(90deg,transparent,#00BFFF,transparent);height:1px;}
+    .hero-bg{background:radial-gradient(ellipse 70% 50% at 50% -5%,rgba(0,191,255,0.10) 0%,transparent 65%);}
+    .calc-input,.calc-select{background:#111827;border:1px solid #1C2433;border-radius:.625rem;color:#e2e8f0;width:100%;padding:.65rem .9rem;font-size:.95rem;transition:border-color .15s,box-shadow .15s;outline:none;appearance:none;-webkit-appearance:none;}
+    .calc-input:focus,.calc-select:focus{border-color:#00BFFF;box-shadow:0 0 0 3px rgba(0,191,255,0.12);}
+    .calc-input[type=number]::-webkit-inner-spin-button,.calc-input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+    .calc-input[type=number]{-moz-appearance:textfield;}
+    .calc-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300BFFF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.5rem;}
+    .calc-select option{background:#0D1117;color:#e2e8f0;}
+    .nav-link{transition:color .15s;color:#94a3b8;}
+    .nav-link:hover{color:#00BFFF;}
+    label{display:block;font-size:.8rem;font-weight:500;color:#94a3b8;margin-bottom:.4rem;}
+    .cta-pulse{animation:ctaPulse 3s ease-in-out infinite;}
+    @keyframes ctaPulse{0%,100%{box-shadow:0 0 16px rgba(0,191,255,0.35);}50%{box-shadow:0 0 36px rgba(0,191,255,0.6);}}
+    .fade-in{animation:fadeIn .4s ease both;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+    .tco-table{width:100%;border-collapse:collapse;}
+    .tco-table th,.tco-table td{padding:.6rem .8rem;text-align:right;font-size:.85rem;border-bottom:1px solid #1C2433;}
+    .tco-table th:first-child,.tco-table td:first-child{text-align:left;color:#94a3b8;}
+    .tco-table thead th{font-size:.75rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #1C2433;}
+    .tco-table .gas-col{color:#fb923c;}
+    .tco-table .ev-col{color:#00BFFF;}
+    .tco-table .total-row td{font-weight:700;font-size:.95rem;border-top:2px solid #1C2433;border-bottom:none;}
+    .bar-track{background:#1C2433;border-radius:99px;height:8px;overflow:hidden;}
+    .bar-fill{height:100%;border-radius:99px;transition:width .6s cubic-bezier(.4,0,.2,1);}
+  </style>
+<meta name="google-adsense-account" content="ca-pub-1460692736386027">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQQS92H7YB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VQQS92H7YB');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1460692736386027" crossorigin="anonymous"></script>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#00E5FF">
+<link rel="canonical" href="https://wattlabtech.netlify.app/tco.html">
+<link rel="alternate" hreflang="x-default" href="https://wattlabtech.netlify.app/tco.html">
+<link rel="alternate" hreflang="en" href="https://wattlabtech.netlify.app/tco.html">
+<link rel="stylesheet" href="css/tw-tools.css?v=3">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wattlab">
+<meta property="og:title" content="EV Total Cost of Ownership Calculator (5-Year) | Wattlab">
+<meta property="og:description" content="5-year total cost of ownership: EV vs gas car. Compare purchase price, fuel, insurance, maintenance, and resale value side by side.">
+<meta property="og:url" content="https://wattlabtech.netlify.app/tco.html">
+<meta property="og:image" content="https://wattlabtech.netlify.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EV Total Cost of Ownership Calculator (5-Year) | Wattlab">
+<meta name="twitter:description" content="5-year total cost of ownership: EV vs gas car. Compare purchase price, fuel, insurance, maintenance, and resale value side by side.">
+<meta name="twitter:image" content="https://wattlabtech.netlify.app/assets/og-image.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://wattlabtech.netlify.app/"}, {"@type": "ListItem", "position": 2, "name": "EV Total Cost of Ownership Calculator (5-Year)", "item": "https://wattlabtech.netlify.app/tco.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "EV Total Cost of Ownership Calculator (5-Year)", "url": "https://wattlabtech.netlify.app/tco.html", "description": "5-year total cost of ownership: EV vs gas car. Compare purchase price, fuel, insurance, maintenance, and resale value side by side.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Wattlab"}}</script>
+</head>
+<body class="font-sans antialiased">
+
+<header class="sticky top-0 z-50 border-b border-[#1C2433] bg-[#080C10]/90 backdrop-blur-md">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="font-bold text-lg tracking-tight">Watt<span class="neon-text">lab</span></a>
+    <a href="tools-hub.html" class="nav-link text-sm">← All Tools</a>
+  </nav>
+</header>
+
+<main class="hero-bg">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-24">
+
+    <div class="mb-10">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-6 h-px bg-[#00BFFF]"></span>
+        <span class="text-xs font-mono text-[#00BFFF] tracking-widest uppercase">Tool 3 of 4</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3">📊 Total Cost of Ownership</h1>
+      <p class="text-slate-400 max-w-xl">The full 5-year picture — every dollar in and out, EV vs gas, side by side.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-6">
+
+      <!-- INPUTS - two columns (gas + EV) -->
+      <div class="lg:col-span-2 flex flex-col gap-5">
+
+        <!-- Gas Car -->
+        <div class="bg-[#0D1117] border border-[#1C2433] rounded-2xl p-6 flex flex-col gap-4">
+          <div class="text-xs font-mono text-orange-400 uppercase tracking-widest flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-orange-400"></span> Gas Car
+          </div>
+          <div>
+            <label>Purchase Price ($)</label>
+            <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+            <input id="gas-price-car" type="number" class="calc-input pl-6" value="30000"/></div>
+          </div>
+          <div>
+            <label>Fuel Economy (MPG)</label>
+            <input id="gas-mpg" type="number" class="calc-input" value="28"/>
+          </div>
+          <div>
+            <label>Gas Price per Gallon ($)</label>
+            <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+            <input id="gas-fuel-price" type="number" class="calc-input pl-6" value="3.50" step="0.01"/></div>
+          </div>
+          <div>
+            <label>Annual Insurance ($)</label>
+            <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+            <input id="gas-insurance" type="number" class="calc-input pl-6" value="1800"/></div>
+          </div>
+          <div>
+            <label>Annual Maintenance ($)</label>
+            <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+            <input id="gas-maint" type="number" class="calc-input pl-6" value="1200"/></div>
+          </div>
+          <div>
+            <label>Resale Value After 5 Years ($)</label>
+            <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+            <input id="gas-resale" type="number" class="calc-input pl-6" value="14000"/></div>
+          </div>
+        </div>
+
+        <!-- EV -->
+        <div class="bg-[#0D1117] border border-[#1C2433] rounded-2xl p-6 flex flex-col gap-4">
+          <div class="text-xs font-mono text-[#00BFFF] uppercase tracking-widest flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#00BFFF]"></span> Electric Vehicle
+          </div>
+          <div>
+            <label>Purchase Price ($)</label>
+            <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+            <input id="ev-price-car" type="number" class="calc-input pl-6" value="42000"/></div>
+          </div>
+          <div>
+            <label>Incentives &amp; Rebates ($)</label>
+            <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+            <input id="ev-tax-credit" type="number" class="calc-input pl-6" value="0"/></div>
+          </div>
+          <div>
+            <label>Electricity Rate (¢/kWh)</label>
+            <input id="ev-rate" type="number" class="calc-input" value="14" step="0.1"/>
+          </div>
+          <div>
+            <label>EV Efficiency (mi/kWh)</label>
+            <input id="ev-eff" type="number" class="calc-input" value="3.5" step="0.1"/>
+          </div>
+          <div>
+            <label>Annual Insurance ($)</label>
+            <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+            <input id="ev-insurance" type="number" class="calc-input pl-6" value="2100"/></div>
+          </div>
+          <div>
+            <label>Annual Maintenance ($)</label>
+            <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+            <input id="ev-maint" type="number" class="calc-input pl-6" value="500"/></div>
+          </div>
+          <div>
+            <label>Resale Value After 5 Years ($)</label>
+            <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+            <input id="ev-resale" type="number" class="calc-input pl-6" value="22000"/></div>
+          </div>
+        </div>
+
+        <div class="bg-[#0D1117] border border-[#1C2433] rounded-2xl p-5">
+          <label>Daily Miles Driven</label>
+          <input id="tco-miles" type="number" class="calc-input" value="35"/>
+        </div>
+
+        <button onclick="calcTCO()" class="w-full bg-[#00BFFF] text-[#080C10] font-bold py-3.5 rounded-xl cta-pulse text-sm">
+          📊 Calculate 5-Year TCO
+        </button>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="lg:col-span-3 flex flex-col gap-5">
+
+        <div id="tco-empty" class="flex flex-col items-center justify-center min-h-[300px] bg-[#0D1117] border border-[#1C2433] rounded-2xl p-8 text-center">
+          <div class="text-5xl mb-4">📊</div>
+          <p class="text-slate-400">Fill in both vehicle details to see the full 5-year cost comparison.</p>
+        </div>
+
+        <div id="tco-results" class="hidden fade-in flex flex-col gap-5">
+
+          <!-- Winner banner -->
+          <div id="tco-winner" class="rounded-2xl border p-7 text-center"></div>
+
+          <!-- Side by side totals -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-[#0D1117] border border-orange-500/30 rounded-xl p-5 text-center">
+              <div class="text-xs text-orange-400 font-mono uppercase tracking-widest mb-2">Gas Car · 5yr</div>
+              <div id="gas-total-cost" class="text-3xl font-extrabold text-orange-400">$—</div>
+              <div class="text-xs text-slate-500 mt-1">total cost after resale</div>
+            </div>
+            <div class="bg-[#0D1117] border border-[#00BFFF]/40 rounded-xl p-5 text-center">
+              <div class="text-xs text-[#00BFFF] font-mono uppercase tracking-widest mb-2">EV · 5yr</div>
+              <div id="ev-total-cost" class="text-3xl font-extrabold text-[#00BFFF]">$—</div>
+              <div class="text-xs text-slate-500 mt-1">total cost after resale</div>
+            </div>
+          </div>
+
+          <!-- Detailed breakdown table -->
+          <div class="bg-[#0D1117] border border-[#1C2433] rounded-2xl p-5 overflow-x-auto">
+            <div class="text-sm font-semibold mb-4">5-Year Cost Breakdown</div>
+            <table class="tco-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th class="gas-col">Gas Car</th>
+                  <th class="ev-col">EV</th>
+                  <th style="color:#22c55e">Difference</th>
+                </tr>
+              </thead>
+              <tbody id="tco-tbody"></tbody>
+            </table>
+          </div>
+
+          <!-- Bar chart comparison -->
+          <div class="bg-[#0D1117] border border-[#1C2433] rounded-2xl p-6">
+            <div class="text-sm font-semibold mb-5">Cost Breakdown Visual</div>
+            <div id="tco-bars" class="flex flex-col gap-4"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Next tool -->
+    <div class="mt-10 grad-line"></div>
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0D1117] border border-[#1C2433] rounded-2xl p-6">
+      <div>
+        <div class="text-xs font-mono text-[#00BFFF] mb-1">NEXT TOOL</div>
+        <div class="font-semibold">Charging Time Calculator</div>
+        <div class="text-sm text-slate-400">How long to charge your EV at home vs public charger?</div>
+      </div>
+      <a href="ev-charging-guide-2026.html" class="shrink-0 bg-[#00BFFF] text-[#080C10] font-bold px-6 py-3 rounded-xl text-sm">Calculate Charge Time →</a>
+    </div>
+  </div>
+<section class="max-w-4xl mx-auto px-4 sm:px-6 pb-20 text-sm text-slate-400 leading-relaxed space-y-3" aria-label="About this calculator"><h2 class="text-lg font-bold text-white">How the 5-year cost of ownership calculator works</h2><h3 class="font-semibold text-slate-200 pt-2">What it adds up</h3><p>Total cost of ownership = purchase price + energy + insurance + maintenance + fees − expected resale value − any incentives, over five years. Depreciation (the difference between price and resale value) is usually the largest single cost.</p><h3 class="font-semibold text-slate-200 pt-2">Getting accurate inputs</h3><p>Get real insurance quotes for both cars, use your actual electricity and gas prices, and check recent used prices for resale value. Federal EV credits ended for vehicles acquired after September 30, 2025 — enter only state or utility incentives you have verified.</p><h3 class="font-semibold text-slate-200 pt-2">Limits</h3><p>The tool uses fixed prices over the period and does not model interest, taxes on incentives or major repairs. Read our worked example in <a class="text-[#00BFFF] underline" href="ev-cost-of-ownership-2026.html">True Cost of Owning an EV in 2026</a>.</p><h3 class="font-semibold text-slate-200 pt-2">Frequently asked questions</h3><div><p class="font-medium text-slate-300">Does the calculator include depreciation?</p><p>Yes, through the purchase price and the resale value you enter for each car.</p></div><div><p class="font-medium text-slate-300">Which costs matter most?</p><p>For most people it is depreciation, followed by energy and insurance. Maintenance is usually smaller.</p></div><p class="text-xs text-slate-500 pt-2">Results are estimates for planning only and not financial, tax or legal advice. Read our <a class="text-[#00BFFF] underline" href="editorial-policy.html">editorial policy</a>.</p></section></main>
+
+<footer class="border-t border-[#1C2433] bg-[#0D1117] py-8 text-center text-xs text-slate-600">
+  © 2026 Wattlab · <a href="tools-hub.html" class="hover:text-[#00BFFF]">All EV Tools</a> · <a href="index.html" class="hover:text-[#00BFFF]">Home</a>
+<p class="text-xs text-slate-500 mt-3 footer-legal"><a href="privacy-policy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="editorial-policy.html">Editorial Policy</a> · <a href="contact.html">Contact</a></p>
+</footer>
+
+<script>
+document.querySelectorAll('input').forEach(el=>el.addEventListener('input',calcTCO));
+
+function fmt(n){return '$'+Math.abs(Math.round(n)).toLocaleString();}
+
+function calcTCO(){
+  const gasPriceCar  = parseFloat(document.getElementById('gas-price-car').value)||30000;
+  const gasMpg       = parseFloat(document.getElementById('gas-mpg').value)||28;
+  const gasFuelPrice = parseFloat(document.getElementById('gas-fuel-price').value)||3.50;
+  const gasIns       = parseFloat(document.getElementById('gas-insurance').value)||1800;
+  const gasMaint     = parseFloat(document.getElementById('gas-maint').value)||1200;
+  const gasResale    = parseFloat(document.getElementById('gas-resale').value)||14000;
+
+  const evPriceCar   = parseFloat(document.getElementById('ev-price-car').value)||42000;
+  const evCredit     = parseFloat(document.getElementById('ev-tax-credit').value)||0;
+  const evRate       = parseFloat(document.getElementById('ev-rate').value)||14;
+  const evEff        = parseFloat(document.getElementById('ev-eff').value)||3.5;
+  const evIns        = parseFloat(document.getElementById('ev-insurance').value)||2100;
+  const evMaint      = parseFloat(document.getElementById('ev-maint').value)||500;
+  const evResale     = parseFloat(document.getElementById('ev-resale').value)||22000;
+  const dailyMi      = parseFloat(document.getElementById('tco-miles').value)||35;
+
+  const yearlyMi = dailyMi * 365;
+  const years = 5;
+
+  // Gas totals
+  const gasFuelTotal  = (yearlyMi / gasMpg) * gasFuelPrice * years;
+  const gasInsTotal   = gasIns * years;
+  const gasMaintTotal = gasMaint * years;
+  const gasNetPurchase= gasPriceCar;
+  const gasTotal      = gasNetPurchase + gasFuelTotal + gasInsTotal + gasMaintTotal - gasResale;
+
+  // EV totals
+  const evFuelTotal   = (yearlyMi / evEff) * (evRate/100) * years;
+  const evInsTotal    = evIns * years;
+  const evMaintTotal  = evMaint * years;
+  const evNetPurchase = evPriceCar - evCredit;
+  const evTotal       = evNetPurchase + evFuelTotal + evInsTotal + evMaintTotal - evResale;
+
+  const diff = gasTotal - evTotal; // positive = EV wins
+
+  // Show
+  document.getElementById('tco-empty').classList.add('hidden');
+  document.getElementById('tco-results').classList.remove('hidden');
+
+  // Winner
+  const winnerEl = document.getElementById('tco-winner');
+  if(diff > 0){
+    winnerEl.className='rounded-2xl border border-[#00BFFF] bg-[#00BFFF]/5 p-7 text-center';
+    winnerEl.innerHTML=`<div class="text-3xl mb-2">⚡</div><div class="text-slate-400 text-sm mb-1">The EV is cheaper over 5 years by</div><div class="text-4xl font-extrabold text-[#00BFFF]">${fmt(diff)}</div><div class="text-slate-400 text-sm mt-1">including all costs</div>`;
+  } else {
+    winnerEl.className='rounded-2xl border border-orange-500/40 bg-orange-500/5 p-7 text-center';
+    winnerEl.innerHTML=`<div class="text-3xl mb-2">⛽</div><div class="text-slate-400 text-sm mb-1">The gas car is cheaper over 5 years by</div><div class="text-4xl font-extrabold text-orange-400">${fmt(Math.abs(diff))}</div><div class="text-slate-400 text-sm mt-1">mostly due to higher EV purchase price</div>`;
+  }
+
+  document.getElementById('gas-total-cost').textContent = fmt(gasTotal);
+  document.getElementById('ev-total-cost').textContent  = fmt(evTotal);
+
+  // Table rows
+  const rows = [
+    ['Purchase Price',    gasPriceCar,  evNetPurchase, evNetPurchase < gasPriceCar],
+    ['5yr Fuel / Charging', gasFuelTotal, evFuelTotal,  evFuelTotal < gasFuelTotal],
+    ['5yr Insurance',     gasInsTotal,   evInsTotal,   evInsTotal < gasInsTotal],
+    ['5yr Maintenance',   gasMaintTotal, evMaintTotal, evMaintTotal < gasMaintTotal],
+    ['Resale Value',      -gasResale,    -evResale,    evResale > gasResale],
+  ];
+
+  const tbody = document.getElementById('tco-tbody');
+  tbody.innerHTML = rows.map(([label, gas, ev, evWins])=>{
+    const d = gas - ev;
+    const dStr = (d>0?'EV saves ':'Gas saves ')+fmt(Math.abs(d));
+    return `<tr>
+      <td>${label}</td>
+      <td class="gas-col">${fmt(gas)}</td>
+      <td class="ev-col">${fmt(ev)}</td>
+      <td style="color:${evWins?'#22c55e':'#f97316'};font-size:.78rem">${dStr}</td>
+    </tr>`;
+  }).join('') +
+  `<tr class="total-row">
+    <td>5-Year Total</td>
+    <td class="gas-col">${fmt(gasTotal)}</td>
+    <td class="ev-col">${fmt(evTotal)}</td>
+    <td style="color:${diff>0?'#22c55e':'#f97316'}">${diff>0?'EV wins':'Gas wins'} ${fmt(Math.abs(diff))}</td>
+  </tr>`;
+
+  // Bar chart
+  const barCategories = [
+    {label:'Purchase (net)', gas: gasPriceCar, ev: evNetPurchase},
+    {label:'Fuel / Charging', gas: gasFuelTotal, ev: evFuelTotal},
+    {label:'Insurance',       gas: gasInsTotal,  ev: evInsTotal},
+    {label:'Maintenance',     gas: gasMaintTotal, ev: evMaintTotal},
+  ];
+  const maxVal = Math.max(...barCategories.map(b=>Math.max(b.gas,b.ev)));
+  document.getElementById('tco-bars').innerHTML = barCategories.map(b=>`
+    <div>
+      <div class="flex justify-between text-xs text-slate-500 mb-1"><span>${b.label}</span></div>
+      <div class="flex items-center gap-2 mb-1">
+        <div class="w-16 text-right text-xs text-orange-400 font-mono">${fmt(b.gas)}</div>
+        <div class="flex-1 bar-track"><div class="bar-fill bg-orange-400" style="width:${(b.gas/maxVal*100).toFixed(1)}%"></div></div>
+        <div class="text-xs text-orange-400 font-mono w-4">⛽</div>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="w-16 text-right text-xs text-[#00BFFF] font-mono">${fmt(b.ev)}</div>
+        <div class="flex-1 bar-track"><div class="bar-fill" style="width:${(b.ev/maxVal*100).toFixed(1)}%;background:#00BFFF"></div></div>
+        <div class="text-xs text-[#00BFFF] w-4">⚡</div>
+      </div>
+    </div>`).join('');
+}
+</script>
+</body>
+</html>
